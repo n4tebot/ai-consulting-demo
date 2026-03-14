@@ -100,14 +100,10 @@ export default function Contact({
                   <h3 className="font-semibold mb-1">Address</h3>
                   <p className="text-gray-300">{contactInfo.address}</p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Hours */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.5 }}
+              <div
                 className="flex items-start"
               >
                 <div className="w-6 h-6 text-blue-400 mr-4 flex-shrink-0 mt-1">
@@ -128,16 +124,12 @@ export default function Contact({
                     )}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
 
             {/* Social Media */}
             {contactInfo.socialMedia && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.6 }}
+              <div
                 className="mt-8"
               >
                 <h3 className="font-semibold mb-4">Follow Us</h3>
@@ -158,17 +150,13 @@ export default function Contact({
                     </a>
                   )}
                 </div>
-              </motion.div>
+              </div>
             )}
           </div>
 
           {/* Map Placeholder */}
           {showMap && (
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+            <div
               className="lg:pl-8"
             >
               <div className="bg-gray-800 rounded-2xl p-8 h-96 flex items-center justify-center border border-gray-700">
@@ -183,22 +171,18 @@ export default function Contact({
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </div>
           )}
         </div>
 
         {/* Bottom Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.7 }}
+        <div
           className="border-t border-gray-700 mt-16 pt-8 text-center"
         >
           <p className="text-gray-400">
             © 2024 {businessName}. All rights reserved. | Licensed & Insured
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

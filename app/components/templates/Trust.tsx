@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 
 interface TrustFeature {
   title: string
@@ -32,35 +31,23 @@ export default function Trust({
     <section className="py-20 bg-blue-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <h2
             className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
           >
             {title}
-          </motion.h2>
+          </h2>
           {subtitle && (
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+            <p
               className="text-xl text-gray-600 max-w-3xl mx-auto"
             >
               {subtitle}
-            </motion.p>
+            </p>
           )}
         </div>
 
         {/* Stats Section */}
         {stats.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+          <div
             className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16"
           >
             {stats.map((stat, index) => (
@@ -73,18 +60,14 @@ export default function Trust({
                 </div>
               </div>
             ))}
-          </motion.div>
+          </div>
         )}
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
           {features.map((feature, index) => (
-            <motion.div
+            <div
               key={feature.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`text-center p-6 rounded-2xl ${
                 feature.highlight 
                   ? 'bg-blue-600 text-white shadow-lg' 
@@ -106,17 +89,13 @@ export default function Trust({
               }`}>
                 {feature.description}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Trust Badges */}
         {badges.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+          <div
             className="flex flex-wrap justify-center items-center gap-6"
           >
             {badges.map((badge, index) => (
@@ -130,7 +109,7 @@ export default function Trust({
                 <span className="font-medium text-gray-700">{badge}</span>
               </div>
             ))}
-          </motion.div>
+          </div>
         )}
       </div>
     </section>

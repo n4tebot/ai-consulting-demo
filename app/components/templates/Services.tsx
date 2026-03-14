@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 
 interface Service {
   title: string
@@ -34,36 +33,24 @@ export default function Services({
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+          <h2
             className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
           >
             {title}
-          </motion.h2>
+          </h2>
           {subtitle && (
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+            <p
               className="text-xl text-gray-600 max-w-3xl mx-auto"
             >
               {subtitle}
-            </motion.p>
+            </p>
           )}
         </div>
 
         <div className={`grid grid-cols-1 ${columnClasses[columns]} gap-8`}>
           {services.map((service, index) => (
-            <motion.div
+            <div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition-shadow duration-200 border border-gray-100 group hover:border-blue-200"
             >
               <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
@@ -101,7 +88,7 @@ export default function Services({
               <button className="mt-6 w-full bg-gradient-to-r from-blue-50 to-indigo-50 hover:from-blue-100 hover:to-indigo-100 text-blue-700 py-3 px-4 rounded-xl font-medium transition-all duration-200 border border-blue-200 hover:border-blue-300">
                 Learn More
               </button>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
