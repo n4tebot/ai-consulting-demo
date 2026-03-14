@@ -1,344 +1,498 @@
 'use client'
 
 import React from 'react'
-import Hero from '@/app/components/templates/Hero'
-import Services from '@/app/components/templates/Services'
-import Trust from '@/app/components/templates/Trust'
-import Testimonials from '@/app/components/templates/Testimonials'
-import Contact from '@/app/components/templates/Contact'
 import ChatWidget from '@/app/components/ChatWidget'
-
-const practiceAreas = [
-  {
-    title: 'Personal Injury',
-    description: 'Aggressive representation for car accidents, slip & fall, medical malpractice, and wrongful death cases.',
-    icon: '⚖️',
-    price: 'No fee unless we win',
-    features: ['Free consultation', 'No upfront costs', 'Maximum compensation', '24/7 availability']
-  },
-  {
-    title: 'Family Law',
-    description: 'Compassionate guidance through divorce, child custody, adoption, and other family legal matters.',
-    icon: '👨‍👩‍👧‍👦',
-    price: 'Competitive rates',
-    features: ['Divorce proceedings', 'Child custody', 'Adoption services', 'Mediation available']
-  },
-  {
-    title: 'Criminal Defense',
-    description: 'Experienced criminal defense for DWI, drug charges, assault, theft, and other criminal matters.',
-    icon: '🛡️',
-    price: 'Payment plans available',
-    features: ['24/7 emergency calls', 'Plea negotiations', 'Trial representation', 'Appeals process']
-  },
-  {
-    title: 'Business Law',
-    description: 'Comprehensive legal services for businesses including contracts, formation, and compliance.',
-    icon: '🏢',
-    price: 'Hourly & flat fee options',
-    features: ['Business formation', 'Contract drafting', 'Employment law', 'Intellectual property']
-  },
-  {
-    title: 'Estate Planning',
-    description: 'Protect your family\'s future with wills, trusts, probate, and comprehensive estate planning.',
-    icon: '📋',
-    price: 'Packages starting at $500',
-    features: ['Wills & trusts', 'Probate administration', 'Power of attorney', 'Estate tax planning']
-  },
-  {
-    title: 'Real Estate Law',
-    description: 'Full-service real estate legal support for purchases, sales, disputes, and transactions.',
-    icon: '🏠',
-    price: 'Flat fee closings',
-    features: ['Purchase agreements', 'Title disputes', 'Commercial deals', 'Property litigation']
-  }
-]
-
-const trustFeatures = [
-  {
-    title: 'Experienced Attorneys',
-    description: 'Board-certified lawyers with decades of combined experience and proven track records.',
-    icon: '🎓',
-    highlight: true
-  },
-  {
-    title: 'Personalized Service',
-    description: 'Direct access to your attorney, not just paralegals. We treat every case with personal attention.',
-    icon: '🤝',
-    highlight: false
-  },
-  {
-    title: 'Proven Results',
-    description: 'Millions recovered for clients and thousands of successful cases across all practice areas.',
-    icon: '🏆',
-    highlight: false
-  }
-]
-
-const testimonials = [
-  {
-    name: 'Michael Johnson',
-    role: 'Personal Injury Client',
-    content: 'After my car accident, Stone & Associates fought hard for me. They secured a settlement that exceeded my expectations and handled everything professionally.',
-    rating: 5,
-    location: 'McKinney, TX'
-  },
-  {
-    name: 'Sarah Williams',
-    role: 'Family Law Client',
-    content: 'Going through divorce was difficult, but Mr. Stone made the process as smooth as possible. He protected my interests and my children. Highly recommended.',
-    rating: 5,
-    location: 'Plano, TX'
-  },
-  {
-    name: 'David Chen',
-    role: 'Business Client',
-    content: 'They helped us set up our LLC and draft all our contracts. Professional, knowledgeable, and always available when we need them. Great business partners.',
-    rating: 5,
-    location: 'Frisco, TX'
-  }
-]
-
-const contactInfo = {
-  phone: '(214) 555-0123',
-  email: 'contact@stoneassociateslaw.com',
-  address: '101 Justice Plaza, McKinney, TX 75069',
-  hours: {
-    weekdays: '8:00 AM - 6:00 PM',
-    saturday: '9:00 AM - 2:00 PM (by appointment)',
-    sunday: 'Emergency calls only',
-    emergency: '24/7 Emergency Criminal Defense Line'
-  },
-  socialMedia: {
-    facebook: '#',
-    twitter: '#'
-  }
-}
-
-const trustBadges = [
-  'Texas State Bar Certified',
-  'AV Preeminent Rated (Martindale)',
-  'Better Business Bureau A+ Rating',
-  'Super Lawyers Recognition',
-  'Board Certified Specialists'
-]
-
-const trustStats = [
-  { label: 'Years Experience', value: '25+' },
-  { label: 'Cases Won', value: '5,000+' },
-  { label: 'Recovered for Clients', value: '$50M+' },
-  { label: 'Client Rating', value: '4.9★' }
-]
-
-// Attorney Profiles Component
-function AttorneyProfiles() {
-  const attorneys = [
-    {
-      name: 'Robert Stone',
-      title: 'Managing Partner',
-      specialties: ['Personal Injury', 'Criminal Defense'],
-      experience: '25+ years',
-      education: 'UT Law School, J.D.',
-      photo: '👨‍💼'
-    },
-    {
-      name: 'Jennifer Martinez',
-      title: 'Partner',
-      specialties: ['Family Law', 'Estate Planning'],
-      experience: '15+ years',
-      education: 'SMU Law School, J.D.',
-      photo: '👩‍💼'
-    },
-    {
-      name: 'Michael Thompson',
-      title: 'Associate',
-      specialties: ['Business Law', 'Real Estate'],
-      experience: '8+ years',
-      education: 'Baylor Law School, J.D.',
-      photo: '👨‍⚖️'
-    }
-  ]
-
-  return (
-    <section className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate-fade-in-up">
-            Meet Our Legal Team
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up-delay-1">
-            Experienced attorneys dedicated to protecting your rights and achieving the best possible outcome for your case
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {attorneys.map((attorney, index) => (
-            <div
-              key={attorney.name}
-              className="bg-white rounded-2xl p-8 shadow-lg text-center animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="text-6xl mb-6">{attorney.photo}</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">{attorney.name}</h3>
-              <p className="text-blue-600 font-semibold mb-4">{attorney.title}</p>
-              
-              <div className="text-left space-y-3">
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Specialties:</h4>
-                  <p className="text-gray-600">{attorney.specialties.join(', ')}</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Experience:</h4>
-                  <p className="text-gray-600">{attorney.experience}</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-900 mb-1">Education:</h4>
-                  <p className="text-gray-600">{attorney.education}</p>
-                </div>
-              </div>
-
-              <button className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-xl font-medium transition-colors">
-                Contact {attorney.name.split(' ')[0]}
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
-}
-
-// Case Results Component
-function CaseResults() {
-  const results = [
-    { type: 'Car Accident Settlement', amount: '$2.3M', description: 'Severe injury case with long-term care needs' },
-    { type: 'Medical Malpractice', amount: '$1.8M', description: 'Surgical error resulting in permanent disability' },
-    { type: 'Wrongful Death', amount: '$1.5M', description: 'Construction accident wrongful death case' },
-    { type: 'Business Dispute', amount: '$800K', description: 'Contract breach and damages recovery' }
-  ]
-
-  return (
-    <section className="py-20 bg-blue-900 text-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-fade-in-up">
-            Proven Results
-          </h2>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto animate-fade-in-up-delay-1">
-            Recent successful cases and recoveries for our clients
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {results.map((result, index) => (
-            <div
-              key={result.type}
-              className="bg-blue-800 rounded-xl p-6 text-center animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <h3 className="text-2xl font-bold text-yellow-400 mb-2">{result.amount}</h3>
-              <h4 className="font-semibold mb-3">{result.type}</h4>
-              <p className="text-sm text-blue-200">{result.description}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center mt-12 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-          <p className="text-blue-200 mb-4">*Past results do not guarantee future outcomes.</p>
-          <button className="bg-yellow-500 hover:bg-yellow-400 text-blue-900 px-8 py-3 rounded-xl font-bold transition-colors">
-            Free Case Evaluation
-          </button>
-        </div>
-      </div>
-    </section>
-  )
-}
 
 export default function LawPage() {
   const handleFreeConsultation = () => {
-    // In a real app, this would open a booking modal or redirect to scheduling
-    alert('Free consultation booking would open here! Call (214) 555-0123 for your free case evaluation.')
+    alert('Consultation booking would open here! Call (214) 555-0189 for your free consultation.')
   }
 
   return (
-    <main className="min-h-screen">
-      {/* Custom Hero with Professional Styling */}
-      <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 py-20 md:py-32 overflow-hidden text-white">
-        {/* Background decoration */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-600/20 rounded-full blur-xl"></div>
-          <div className="absolute bottom-20 right-10 w-48 h-48 bg-indigo-600/20 rounded-full blur-xl"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6 bg-yellow-400 text-blue-900 animate-fade-in-up">
-              ⚖️ Free Consultation Available
+    <div className="min-h-screen bg-white">
+      {/* Professional Header */}
+      <header className="bg-slate-900 text-white border-b border-yellow-600">
+        <div className="max-w-6xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-yellow-600 rounded flex items-center justify-center">
+                <span className="text-white text-xl font-bold">⚖️</span>
+              </div>
+              <div>
+                <h1 className="font-source-serif text-2xl font-semibold">Stone & Associates</h1>
+                <p className="text-gray-300 text-sm">Attorneys at Law</p>
+              </div>
             </div>
+            <div className="text-right">
+              <p className="text-yellow-400 text-lg font-semibold">(214) 555-0189</p>
+              <p className="text-gray-300 text-sm">Free Consultation</p>
+            </div>
+          </div>
+        </div>
+      </header>
 
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-fade-in-up-delay-1">
-              Protecting Your Rights,
-              <br />
-              <span className="text-yellow-400">Fighting for Justice</span>
-            </h1>
-
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed animate-fade-in-up-delay-2">
-              Experienced legal representation across Texas. From personal injury to family law, we fight tirelessly to achieve the best outcome for your case.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up-delay-3">
-              <button
-                onClick={handleFreeConsultation}
-                className="inline-flex items-center px-8 py-4 rounded-xl text-lg font-semibold bg-yellow-400 text-blue-900 shadow-lg hover:shadow-xl transition-all duration-200 hover:bg-yellow-300 transform hover:scale-105"
-              >
-                Get Free Consultation
-                <svg className="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </button>
-              <button className="inline-flex items-center px-8 py-4 rounded-xl text-lg font-semibold border-2 border-white text-white hover:bg-white hover:text-blue-900 transition-all duration-200">
-                Call (214) 555-0123
-              </button>
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-r from-slate-800 to-slate-900 text-white py-20 md:py-32">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="relative max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="animate-slide-in-left">
+              <h2 className="font-source-serif text-4xl md:text-5xl font-semibold text-white mb-6 leading-tight">
+                Protecting What Matters Most
+              </h2>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+                For over 20 years, Stone & Associates has provided trusted legal counsel to individuals, 
+                families, and businesses throughout North Texas. When you need experienced representation, 
+                we're here to fight for you.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <button
+                  onClick={handleFreeConsultation}
+                  className="bg-yellow-600 text-white px-8 py-4 rounded font-semibold text-lg hover:bg-yellow-700 transition-colors hover-lift"
+                >
+                  Free Consultation
+                </button>
+                <a 
+                  href="tel:214-555-0189"
+                  className="border-2 border-yellow-600 text-yellow-600 px-8 py-4 rounded font-semibold text-lg hover:bg-yellow-600 hover:text-white transition-colors"
+                >
+                  Call (214) 555-0189
+                </a>
+              </div>
+            </div>
+            <div className="animate-slide-in-right">
+              <div className="bg-white/10 backdrop-blur rounded-lg p-8 border border-white/20">
+                <h3 className="text-2xl font-semibold text-white mb-6">Why Choose Our Firm?</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <div className="w-6 h-6 bg-yellow-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                      <span className="text-white text-xs font-bold">✓</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-white">Proven Track Record</p>
+                      <p className="text-gray-300 text-sm">$50M+ recovered for our clients</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="w-6 h-6 bg-yellow-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                      <span className="text-white text-xs font-bold">✓</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-white">Experienced Team</p>
+                      <p className="text-gray-300 text-sm">20+ years serving North Texas</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="w-6 h-6 bg-yellow-600 rounded-full flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                      <span className="text-white text-xs font-bold">✓</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-white">Personal Attention</p>
+                      <p className="text-gray-300 text-sm">Direct access to your attorney</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <Services
-        title="Practice Areas"
-        subtitle="Comprehensive legal services across multiple areas of law with experienced representation"
-        services={practiceAreas}
-        columns={3}
-      />
+      {/* Practice Areas */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="font-source-serif text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
+              Practice Areas
+            </h2>
+            <p className="text-xl text-gray-600">Comprehensive legal services across multiple areas of law</p>
+          </div>
 
-      <AttorneyProfiles />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center hover-lift animate-fade-in-up-delay-1">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🏥</span>
+              </div>
+              <h3 className="font-source-serif text-xl font-semibold text-gray-900 mb-3">Personal Injury</h3>
+              <p className="text-gray-600 text-sm">Car accidents, slip & fall, medical malpractice, wrongful death</p>
+            </div>
 
-      <CaseResults />
+            <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center hover-lift animate-fade-in-up-delay-2">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">👨‍👩‍👧‍👦</span>
+              </div>
+              <h3 className="font-source-serif text-xl font-semibold text-gray-900 mb-3">Family Law</h3>
+              <p className="text-gray-600 text-sm">Divorce, custody, adoption, child support, prenuptials</p>
+            </div>
 
-      <Trust
-        title="Why Choose Stone & Associates?"
-        subtitle="Trusted legal representation with a proven track record of success"
-        features={trustFeatures}
-        badges={trustBadges}
-        stats={trustStats}
-      />
+            <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center hover-lift animate-fade-in-up-delay-3">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🏢</span>
+              </div>
+              <h3 className="font-source-serif text-xl font-semibold text-gray-900 mb-3">Business Law</h3>
+              <p className="text-gray-600 text-sm">Contract disputes, business formation, employment law</p>
+            </div>
 
-      <Testimonials
-        title="Client Success Stories"
-        subtitle="Real results and testimonials from clients we've helped achieve justice"
-        testimonials={testimonials}
-      />
+            <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 text-center hover-lift animate-fade-in-up-delay-4">
+              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">🛡️</span>
+              </div>
+              <h3 className="font-source-serif text-xl font-semibold text-gray-900 mb-3">Criminal Defense</h3>
+              <p className="text-gray-600 text-sm">DWI, drug charges, white collar crimes, misdemeanors</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <Contact
-        businessName="Stone & Associates Law Firm"
-        contactInfo={contactInfo}
-        showMap={true}
-        emergencyService={false}
-      />
+      {/* Results/Stats Bar */}
+      <section className="py-12 bg-yellow-600">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
+            <div className="animate-fade-in-up-delay-1">
+              <div className="text-3xl font-bold">$50M+</div>
+              <div className="text-sm font-medium">Recovered for Clients</div>
+            </div>
+            <div className="animate-fade-in-up-delay-2">
+              <div className="text-3xl font-bold">500+</div>
+              <div className="text-sm font-medium">Cases Won</div>
+            </div>
+            <div className="animate-fade-in-up-delay-3">
+              <div className="text-3xl font-bold">20+</div>
+              <div className="text-sm font-medium">Years Experience</div>
+            </div>
+            <div className="animate-fade-in-up-delay-4">
+              <div className="text-3xl font-bold">98%</div>
+              <div className="text-sm font-medium">Client Satisfaction</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Attorney Profiles */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="font-source-serif text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
+              Meet Our Attorneys
+            </h2>
+            <p className="text-xl text-gray-600">Experienced legal professionals dedicated to your success</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-12">
+            <div className="text-center animate-fade-in-up-delay-1">
+              <div className="w-48 h-48 bg-slate-100 rounded mx-auto mb-6 flex items-center justify-center">
+                <span className="text-4xl font-source-serif font-semibold text-slate-600">JS</span>
+              </div>
+              <h3 className="font-source-serif text-xl font-semibold text-gray-900 mb-2">James Stone</h3>
+              <p className="text-yellow-600 font-semibold mb-3">Senior Partner & Founder</p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                Over 25 years of experience in personal injury and family law. Board certified 
+                trial attorney with a proven track record of successful outcomes.
+              </p>
+              <div className="text-gray-500 text-sm space-y-1">
+                <p>• J.D., SMU Dedman School of Law</p>
+                <p>• Texas State Bar Board Certified</p>
+                <p>• Super Lawyers Rising Star</p>
+              </div>
+            </div>
+
+            <div className="text-center animate-fade-in-up-delay-2">
+              <div className="w-48 h-48 bg-slate-100 rounded mx-auto mb-6 flex items-center justify-center">
+                <span className="text-4xl font-source-serif font-semibold text-slate-600">MR</span>
+              </div>
+              <h3 className="font-source-serif text-xl font-semibold text-gray-900 mb-2">Maria Rodriguez</h3>
+              <p className="text-yellow-600 font-semibold mb-3">Partner, Business Law</p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                Specializes in business law and commercial litigation. Former corporate counsel 
+                with extensive experience in contract negotiations and business disputes.
+              </p>
+              <div className="text-gray-500 text-sm space-y-1">
+                <p>• J.D., University of Texas School of Law</p>
+                <p>• Texas State Bar Certified</p>
+                <p>• AV Rated by Martindale-Hubbell</p>
+              </div>
+            </div>
+
+            <div className="text-center animate-fade-in-up-delay-3">
+              <div className="w-48 h-48 bg-slate-100 rounded mx-auto mb-6 flex items-center justify-center">
+                <span className="text-4xl font-source-serif font-semibold text-slate-600">DW</span>
+              </div>
+              <h3 className="font-source-serif text-xl font-semibold text-gray-900 mb-2">David Williams</h3>
+              <p className="text-yellow-600 font-semibold mb-3">Associate, Criminal Defense</p>
+              <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                Former prosecutor with deep understanding of criminal law. Aggressive advocate 
+                for clients facing serious criminal charges.
+              </p>
+              <div className="text-gray-500 text-sm space-y-1">
+                <p>• J.D., Baylor Law School</p>
+                <p>• Former Dallas County Prosecutor</p>
+                <p>• Criminal Defense Specialist</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Client Testimonials */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="font-source-serif text-3xl md:text-4xl font-semibold text-gray-900 mb-4">
+              Client Testimonials
+            </h2>
+            <p className="text-xl text-gray-600">Real experiences from clients we've helped</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-lg p-8 shadow-sm border border-gray-100 animate-fade-in-up-delay-1">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-500 mr-3">
+                  <span>★★★★★</span>
+                </div>
+                <span className="text-sm text-gray-500 bg-blue-100 px-2 py-1 rounded">Personal Injury</span>
+              </div>
+              <p className="text-gray-700 mb-4 leading-relaxed italic">
+                "After my car accident, I thought I was going to be stuck with massive medical bills. 
+                James and his team fought hard and got me a settlement that covered everything and more. 
+                Professional and caring throughout the entire process."
+              </p>
+              <div>
+                <p className="font-semibold text-gray-900">Robert Chen</p>
+                <p className="text-gray-600 text-sm">McKinney, TX</p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-lg p-8 shadow-sm border border-gray-100 animate-fade-in-up-delay-2">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-500 mr-3">
+                  <span>★★★★★</span>
+                </div>
+                <span className="text-sm text-gray-500 bg-green-100 px-2 py-1 rounded">Family Law</span>
+              </div>
+              <p className="text-gray-700 mb-4 leading-relaxed italic">
+                "Maria helped me through a difficult divorce with compassion and expertise. 
+                She protected my interests and made sure I got fair custody arrangements. 
+                I couldn't have asked for better representation."
+              </p>
+              <div>
+                <p className="font-semibold text-gray-900">Jennifer Martinez</p>
+                <p className="text-gray-600 text-sm">Plano, TX</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Stone & Associates */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="animate-slide-in-left">
+              <h2 className="font-source-serif text-3xl md:text-4xl font-semibold text-gray-900 mb-6">
+                Why Choose Stone & Associates?
+              </h2>
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <div className="w-6 h-6 bg-yellow-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <span className="text-white text-xs font-bold">1</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Personalized Attention</h4>
+                    <p className="text-gray-600">Every client gets direct access to their attorney, not just paralegals.</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 bg-yellow-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <span className="text-white text-xs font-bold">2</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Proven Results</h4>
+                    <p className="text-gray-600">Over $50 million recovered for our clients in settlements and verdicts.</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 bg-yellow-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <span className="text-white text-xs font-bold">3</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">No Upfront Fees</h4>
+                    <p className="text-gray-600">We work on contingency for personal injury cases - you pay nothing unless we win.</p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-6 h-6 bg-yellow-600 rounded-full flex items-center justify-center mr-4 mt-1">
+                    <span className="text-white text-xs font-bold">4</span>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-2">Local Expertise</h4>
+                    <p className="text-gray-600">Deep knowledge of Texas law and local court systems throughout North Texas.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="animate-slide-in-right">
+              <div className="bg-slate-900 rounded-lg p-8 text-white">
+                <h3 className="font-source-serif text-2xl font-semibold mb-6">Schedule Your Free Consultation</h3>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <span className="w-6 h-6 bg-yellow-600 rounded-full flex items-center justify-center mr-3">
+                      <span className="text-white text-xs">✓</span>
+                    </span>
+                    <span>30-minute consultation at no cost</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="w-6 h-6 bg-yellow-600 rounded-full flex items-center justify-center mr-3">
+                      <span className="text-white text-xs">✓</span>
+                    </span>
+                    <span>Case evaluation and legal options</span>
+                  </div>
+                  <div className="flex items-center">
+                    <span className="w-6 h-6 bg-yellow-600 rounded-full flex items-center justify-center mr-3">
+                      <span className="text-white text-xs">✓</span>
+                    </span>
+                    <span>No obligation to hire</span>
+                  </div>
+                  <div className="pt-4">
+                    <button
+                      onClick={handleFreeConsultation}
+                      className="w-full bg-yellow-600 text-white px-8 py-3 rounded font-semibold hover:bg-yellow-700 transition-colors"
+                    >
+                      Schedule Free Consultation
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div className="animate-slide-in-left">
+              <h2 className="font-source-serif text-3xl md:text-4xl font-semibold text-gray-900 mb-6">
+                Contact Our Office
+              </h2>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Phone</h4>
+                  <p className="text-yellow-600 text-xl font-semibold">(214) 555-0189</p>
+                  <p className="text-gray-600 text-sm">24-hour emergency line for urgent legal matters</p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Address</h4>
+                  <p className="text-gray-700">
+                    321 Legal Plaza<br />
+                    Suite 450<br />
+                    McKinney, TX 75070
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Office Hours</h4>
+                  <div className="text-gray-700 space-y-1">
+                    <p>Monday - Friday: 8:00 AM - 6:00 PM</p>
+                    <p>Saturday: By appointment only</p>
+                    <p>Sunday: Emergency consultations</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="animate-slide-in-right">
+              <div className="bg-white rounded-lg p-8 shadow-sm border border-gray-100">
+                <h3 className="font-source-serif text-xl font-semibold text-gray-900 mb-6">
+                  Get a Free Case Review
+                </h3>
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                    <div className="h-10 bg-gray-100 rounded border border-gray-200"></div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                    <div className="h-10 bg-gray-100 rounded border border-gray-200"></div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                    <div className="h-10 bg-gray-100 rounded border border-gray-200"></div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Legal Matter</label>
+                    <div className="h-24 bg-gray-100 rounded border border-gray-200"></div>
+                  </div>
+                  <button
+                    onClick={handleFreeConsultation}
+                    className="w-full bg-yellow-600 text-white py-3 rounded font-semibold hover:bg-yellow-700 transition-colors"
+                  >
+                    Submit for Free Review
+                  </button>
+                  <p className="text-xs text-gray-500 text-center">
+                    Confidential and secure. No obligation to hire.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-slate-900 text-white py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="md:col-span-2">
+              <h3 className="font-source-serif text-2xl font-semibold mb-4">Stone & Associates</h3>
+              <p className="text-gray-400 leading-relaxed mb-4">
+                Experienced legal representation you can trust. Protecting what matters most 
+                to individuals, families, and businesses throughout North Texas.
+              </p>
+              <p className="text-yellow-400 font-semibold">(214) 555-0189</p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Practice Areas</h4>
+              <div className="text-gray-400 space-y-2 text-sm">
+                <p>Personal Injury</p>
+                <p>Family Law</p>
+                <p>Business Law</p>
+                <p>Criminal Defense</p>
+                <p>Estate Planning</p>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Contact</h4>
+              <div className="text-gray-400 space-y-2 text-sm">
+                <p>321 Legal Plaza, Suite 450</p>
+                <p>McKinney, TX 75070</p>
+                <p>info@stonelaw.com</p>
+                <p>Monday - Friday: 8AM - 6PM</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 mt-12 pt-8">
+            <div className="flex flex-col md:flex-row justify-between items-center text-sm">
+              <p className="text-gray-400 text-center md:text-left">
+                &copy; 2025 Stone & Associates. All rights reserved.
+              </p>
+              <div className="flex space-x-6 mt-4 md:mt-0 text-gray-400">
+                <span>Licensed in Texas</span>
+                <span>•</span>
+                <span>AV Rated</span>
+                <span>•</span>
+                <span>Super Lawyers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
 
       <ChatWidget
         businessName="Stone & Associates"
         businessType="law"
       />
-    </main>
+    </div>
   )
 }

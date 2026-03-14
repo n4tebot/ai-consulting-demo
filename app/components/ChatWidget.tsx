@@ -21,6 +21,41 @@ const businessAvatars = {
   law: '⚖️'
 }
 
+const businessColors = {
+  dental: {
+    primary: 'bg-blue-500',
+    hover: 'hover:bg-blue-600',
+    gradient: 'from-blue-500 to-cyan-500',
+    text: 'text-blue-500',
+    border: 'border-blue-500',
+    focus: 'focus:ring-blue-500'
+  },
+  hvac: {
+    primary: 'bg-orange-500',
+    hover: 'hover:bg-orange-600',
+    gradient: 'from-orange-500 to-red-500',
+    text: 'text-orange-500',
+    border: 'border-orange-500',
+    focus: 'focus:ring-orange-500'
+  },
+  medspa: {
+    primary: 'bg-rose-500',
+    hover: 'hover:bg-rose-600',
+    gradient: 'from-rose-500 to-pink-500',
+    text: 'text-rose-500',
+    border: 'border-rose-500',
+    focus: 'focus:ring-rose-500'
+  },
+  law: {
+    primary: 'bg-yellow-600',
+    hover: 'hover:bg-yellow-700',
+    gradient: 'from-yellow-600 to-amber-600',
+    text: 'text-yellow-600',
+    border: 'border-yellow-600',
+    focus: 'focus:ring-yellow-600'
+  }
+}
+
 const getSmartResponse = (userMessage: string, businessType: string, businessName: string): string => {
   const message = userMessage.toLowerCase()
   
@@ -77,6 +112,7 @@ export default function ChatWidget({ businessName, businessType }: ChatWidgetPro
   const [inputText, setInputText] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const colors = businessColors[businessType]
   
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -140,7 +176,7 @@ export default function ChatWidget({ businessName, businessType }: ChatWidgetPro
       {/* Chat Bubble */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg hover:shadow-xl text-white flex items-center justify-center text-xl md:h-16 md:w-16 animate-fade-in-up hover:scale-110 active:scale-95 transition-transform duration-200"
+        className={`fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-gradient-to-r ${colors.gradient} shadow-lg hover:shadow-xl text-white flex items-center justify-center text-xl md:h-16 md:w-16 animate-fade-in-up hover:scale-110 active:scale-95 transition-transform duration-200`}
       >
         <div className={`transition-all duration-200 ${isOpen ? 'rotate-0' : 'rotate-0'}`}>
           {isOpen ? '✕' : '💬'}
@@ -159,7 +195,7 @@ export default function ChatWidget({ businessName, businessType }: ChatWidgetPro
           {/* Chat Panel */}
           <div className="fixed bottom-6 right-6 z-40 w-[calc(100vw-3rem)] h-[calc(100vh-6rem)] md:w-96 md:h-[500px] bg-white rounded-2xl shadow-2xl flex flex-col md:bottom-24 animate-fade-in-up origin-bottom-right">
               {/* Header */}
-              <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-t-2xl">
+              <div className={`flex items-center justify-between p-4 border-b bg-gradient-to-r ${colors.gradient} text-white rounded-t-2xl`}>
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
                     {businessAvatars[businessType]}
@@ -187,13 +223,13 @@ export default function ChatWidget({ businessName, businessType }: ChatWidgetPro
                     <div
                       className={`max-w-[80%] px-4 py-2 rounded-2xl ${
                         message.isUser
-                          ? 'bg-blue-500 text-white'
+                          ? `${colors.primary} text-white`
                           : 'bg-gray-100 text-gray-800'
                       }`}
                     >
                       <p className="text-sm">{message.text}</p>
                       <p className={`text-xs mt-1 ${
-                        message.isUser ? 'text-blue-100' : 'text-gray-500'
+                        message.isUser ? 'text-white/70' : 'text-gray-500'
                       }`}>
                         {message.timestamp.toLocaleTimeString([], { 
                           hour: '2-digit', 
@@ -229,13 +265,13 @@ export default function ChatWidget({ businessName, businessType }: ChatWidgetPro
                     onChange={(e) => setInputText(e.target.value)}
                     onKeyPress={handleKeyPress}
                     placeholder="Type your message..."
-                    className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                    className={`flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 ${colors.focus} text-sm`}
                     disabled={isTyping}
                   />
                   <button
                     onClick={sendMessage}
                     disabled={!inputText.trim() || isTyping}
-                    className="px-4 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    className={`px-4 py-2 ${colors.primary} text-white rounded-full ${colors.hover} disabled:opacity-50 disabled:cursor-not-allowed transition-colors`}
                   >
                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />

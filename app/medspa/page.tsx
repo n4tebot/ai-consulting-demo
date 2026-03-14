@@ -1,273 +1,391 @@
 'use client'
 
 import React from 'react'
-import Hero from '@/app/components/templates/Hero'
-import Services from '@/app/components/templates/Services'
-import Trust from '@/app/components/templates/Trust'
-import Testimonials from '@/app/components/templates/Testimonials'
-import Contact from '@/app/components/templates/Contact'
 import ChatWidget from '@/app/components/ChatWidget'
-
-const medSpaServices = [
-  {
-    title: 'Botox & Fillers',
-    description: 'Smooth wrinkles and restore volume with FDA-approved injectables administered by licensed professionals.',
-    icon: '✨',
-    price: 'From $12/unit',
-    features: ['Botox Cosmetic', 'Juvederm fillers', 'Lip enhancement', 'Consultation included']
-  },
-  {
-    title: 'Laser Treatments',
-    description: 'Advanced laser therapies for skin resurfacing, hair removal, and pigmentation correction.',
-    icon: '💫',
-    price: 'Starting at $150',
-    features: ['IPL photofacial', 'Laser hair removal', 'Skin resurfacing', 'Age spot removal']
-  },
-  {
-    title: 'Signature Facials',
-    description: 'Customized facial treatments to address your unique skin concerns and enhance your natural glow.',
-    icon: '🌸',
-    price: 'From $85',
-    features: ['HydraFacial MD', 'Chemical peels', 'Microdermabrasion', 'LED light therapy']
-  },
-  {
-    title: 'Body Contouring',
-    description: 'Non-invasive body sculpting treatments to reduce stubborn fat and tighten skin.',
-    icon: '💪',
-    price: 'Package pricing available',
-    features: ['CoolSculpting', 'Radiofrequency', 'Body wraps', 'Skin tightening']
-  },
-  {
-    title: 'Wellness Services',
-    description: 'Holistic treatments to support your overall health and well-being from the inside out.',
-    icon: '🧘‍♀️',
-    price: 'Starting at $75',
-    features: ['IV therapy', 'Vitamin injections', 'Hormone consultation', 'Weight management']
-  },
-  {
-    title: 'Skincare Products',
-    description: 'Professional-grade skincare products to maintain and enhance your treatment results at home.',
-    icon: '🧴',
-    price: 'Varies by product',
-    features: ['Medical-grade products', 'Personalized regimens', 'Professional consultation', 'Ongoing support']
-  }
-]
-
-const trustFeatures = [
-  {
-    title: 'Licensed Medical Professionals',
-    description: 'All treatments performed by licensed nurses and supervised by board-certified physicians.',
-    icon: '👩‍⚕️',
-    highlight: true
-  },
-  {
-    title: 'FDA-Approved Treatments',
-    description: 'Only the safest, most effective treatments and products approved by the FDA.',
-    icon: '🏥',
-    highlight: false
-  },
-  {
-    title: 'Personalized Care',
-    description: 'Custom treatment plans designed specifically for your skin type and aesthetic goals.',
-    icon: '💝',
-    highlight: false
-  }
-]
-
-const testimonials = [
-  {
-    name: 'Amanda Thompson',
-    role: 'Regular client',
-    content: 'The staff at Serenity Med Spa is incredible! My Botox results look so natural, and the facials have completely transformed my skin. I feel confident and beautiful.',
-    rating: 5,
-    location: 'McKinney, TX'
-  },
-  {
-    name: 'Rachel Kim',
-    role: 'First-time client',
-    content: 'I was nervous about trying injectables, but they made me feel so comfortable. The consultation was thorough and the results exceeded my expectations!',
-    rating: 5,
-    location: 'Plano, TX'
-  },
-  {
-    name: 'Susan Miller',
-    role: 'Skincare client',
-    content: 'The HydraFacial is amazing! My skin has never looked better. The team really knows what they\'re doing and the atmosphere is so relaxing and luxurious.',
-    rating: 5,
-    location: 'Frisco, TX'
-  }
-]
-
-const contactInfo = {
-  phone: '(214) 555-0123',
-  email: 'hello@serenitymedspa.com',
-  address: '789 Wellness Circle, McKinney, TX 75072',
-  hours: {
-    weekdays: 'Closed Monday',
-    saturday: '9:00 AM - 7:00 PM',
-    sunday: '10:00 AM - 5:00 PM'
-  },
-  socialMedia: {
-    facebook: '#',
-    instagram: '#'
-  }
-}
-
-const trustBadges = [
-  'Licensed Medical Facility',
-  'Board-Certified Physician Oversight',
-  'FDA-Approved Treatments Only',
-  'Allergan Preferred Provider'
-]
-
-const trustStats = [
-  { label: 'Years Experience', value: '8+' },
-  { label: 'Happy Clients', value: '3,000+' },
-  { label: 'Treatments Performed', value: '15,000+' },
-  { label: 'Client Satisfaction', value: '98%' }
-]
-
-// Before & After Gallery Component
-function BeforeAfterGallery() {
-  const treatments = [
-    { name: 'Botox Results', before: '😔', after: '😊' },
-    { name: 'Skin Rejuvenation', before: '🌫️', after: '✨' },
-    { name: 'Lip Enhancement', before: '😐', after: '💋' }
-  ]
-
-  return (
-    <section className="py-20 bg-gradient-to-br from-pink-50 to-purple-50">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate-fade-in-up">
-            Amazing Transformations
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up-delay-1">
-            See the incredible results our clients achieve with our professional treatments
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {treatments.map((treatment, index) => (
-            <div
-              key={treatment.name}
-              className="bg-white rounded-2xl p-8 shadow-lg text-center animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <h3 className="text-xl font-semibold mb-6 text-gray-900">{treatment.name}</h3>
-              
-              <div className="flex items-center justify-center space-x-8 mb-6">
-                <div className="text-center">
-                  <div className="text-4xl mb-2">{treatment.before}</div>
-                  <p className="text-sm text-gray-600 font-medium">Before</p>
-                </div>
-                
-                <div className="text-2xl text-gray-400">→</div>
-                
-                <div className="text-center">
-                  <div className="text-4xl mb-2">{treatment.after}</div>
-                  <p className="text-sm text-gray-600 font-medium">After</p>
-                </div>
-              </div>
-
-              <button className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-2 rounded-lg font-medium hover:from-pink-600 hover:to-purple-600 transition-all duration-200">
-                View Details
-              </button>
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center mt-12 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-          <p className="text-gray-600 mb-4">*Individual results may vary. Photos shown with patient consent.</p>
-          <button className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-3 rounded-xl font-semibold hover:from-pink-600 hover:to-purple-600 transition-all duration-200 shadow-lg">
-            Schedule Your Consultation
-          </button>
-        </div>
-      </div>
-    </section>
-  )
-}
 
 export default function MedSpaPage() {
   const handleBookConsultation = () => {
-    // In a real app, this would open a booking modal or redirect to scheduling
-    alert('Consultation booking would open here! Call (214) 555-0123 to schedule your complimentary consultation.')
+    alert('Consultation booking would open here! Call (214) 555-0156 to schedule.')
   }
 
   return (
-    <main className="min-h-screen">
-      {/* Custom Hero with Luxury Styling */}
-      <section className="relative bg-gradient-to-br from-pink-50 via-purple-50 to-indigo-50 py-20 md:py-32 overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-10 w-32 h-32 bg-pink-200/30 rounded-full blur-xl"></div>
-          <div className="absolute bottom-20 right-10 w-48 h-48 bg-purple-200/30 rounded-full blur-xl"></div>
-        </div>
-
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6 bg-pink-100 text-pink-800 border border-pink-200 animate-fade-in-up">
-              ✨ Complimentary Consultations Available
+    <div className="min-h-screen bg-stone-50">
+      {/* Elegant Header */}
+      <header className="bg-white border-b border-rose-100">
+        <div className="max-w-6xl mx-auto px-6 py-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-rose-300 to-pink-400 rounded-full flex items-center justify-center">
+                <span className="text-white text-xl">✨</span>
+              </div>
+              <div>
+                <h1 className="font-serif text-2xl font-semibold text-gray-900">Serenity Med Spa</h1>
+                <p className="text-gray-600 text-sm">Luxury Aesthetic Treatments</p>
+              </div>
             </div>
+            <div className="text-right">
+              <p className="text-rose-600 text-lg font-medium">(214) 555-0156</p>
+              <p className="text-gray-600 text-sm">Book Your Consultation</p>
+            </div>
+          </div>
+        </div>
+      </header>
 
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in-up-delay-1">
-              <span className="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
-                Enhance Your Natural Beauty
-              </span>
-            </h1>
-
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed animate-fade-in-up-delay-2">
-              Discover the perfect balance of science and luxury at Serenity Med Spa. Our expert team provides personalized aesthetic treatments in a serene, spa-like environment.
-            </p>
-
-            <div className="animate-fade-in-up-delay-3">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-b from-white to-stone-50 py-20 md:py-32">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="animate-fade-in-up">
+              <h2 className="font-serif text-5xl md:text-6xl font-medium text-gray-900 mb-8 leading-tight">
+                Reveal Your
+                <br />
+                <span className="text-rose-500">Natural Beauty</span>
+              </h2>
+              <p className="text-xl md:text-2xl text-gray-700 mb-10 leading-relaxed font-light">
+                Experience luxury aesthetic treatments in our serene McKinney sanctuary. 
+                Where science meets artistry for naturally beautiful results.
+              </p>
               <button
                 onClick={handleBookConsultation}
-                className="inline-flex items-center px-8 py-4 rounded-xl text-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-200 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 transform hover:scale-105"
+                className="bg-rose-500 text-white px-12 py-4 rounded-full font-medium text-lg hover:bg-rose-600 transition-colors hover-lift shadow-lg"
               >
-                Book Free Consultation
-                <svg className="ml-2 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
+                Book Consultation
               </button>
             </div>
           </div>
         </div>
       </section>
 
-      <Services
-        title="Luxury Wellness & Beauty Services"
-        subtitle="Personalized treatments designed to enhance your natural beauty and boost your confidence"
-        services={medSpaServices}
-        columns={3}
-      />
+      {/* Featured Treatments */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="font-serif text-4xl font-medium text-gray-900 mb-6">
+              Featured Treatments
+            </h2>
+            <div className="w-24 h-px bg-gradient-to-r from-transparent via-rose-300 to-transparent mx-auto mb-6"></div>
+            <p className="text-xl text-gray-600 font-light">
+              Carefully curated services designed to enhance your natural radiance
+            </p>
+          </div>
 
-      <BeforeAfterGallery />
+          <div className="grid lg:grid-cols-3 gap-8">
+            <div className="text-center animate-fade-in-up-delay-1">
+              <div className="bg-gradient-to-b from-stone-50 to-white rounded-3xl p-8 border border-stone-100 hover-lift">
+                <div className="w-20 h-20 bg-gradient-to-br from-rose-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-3xl">💉</span>
+                </div>
+                <h3 className="font-serif text-2xl font-medium text-gray-900 mb-3">Injectables</h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Botox, dermal fillers, and advanced neurotoxins for natural-looking rejuvenation.
+                </p>
+                <p className="text-rose-600 font-medium">Starting at $12/unit</p>
+              </div>
+            </div>
 
-      <Trust
-        title="Why Choose Serenity Med Spa?"
-        subtitle="Experience the perfect blend of medical expertise and luxury wellness"
-        features={trustFeatures}
-        badges={trustBadges}
-        stats={trustStats}
-      />
+            <div className="text-center animate-fade-in-up-delay-2">
+              <div className="bg-gradient-to-b from-stone-50 to-white rounded-3xl p-8 border border-stone-100 hover-lift">
+                <div className="w-20 h-20 bg-gradient-to-br from-rose-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-3xl">✨</span>
+                </div>
+                <h3 className="font-serif text-2xl font-medium text-gray-900 mb-3">Skin Rejuvenation</h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  HydraFacials, chemical peels, and laser treatments for glowing, youthful skin.
+                </p>
+                <p className="text-rose-600 font-medium">From $85</p>
+              </div>
+            </div>
 
-      <Testimonials
-        title="Client Love Stories"
-        subtitle="Hear from our beautiful clients about their transformative experiences"
-        testimonials={testimonials}
-      />
+            <div className="text-center animate-fade-in-up-delay-3">
+              <div className="bg-gradient-to-b from-stone-50 to-white rounded-3xl p-8 border border-stone-100 hover-lift">
+                <div className="w-20 h-20 bg-gradient-to-br from-rose-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-3xl">🧘‍♀️</span>
+                </div>
+                <h3 className="font-serif text-2xl font-medium text-gray-900 mb-3">Body Wellness</h3>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  CoolSculpting, body contouring, and wellness treatments for total body confidence.
+                </p>
+                <p className="text-rose-600 font-medium">Custom packages</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <Contact
-        businessName="Serenity Med Spa"
-        contactInfo={contactInfo}
-        showMap={true}
-      />
+      {/* The Serenity Experience */}
+      <section className="py-20 bg-stone-50">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="animate-fade-in-up">
+            <h2 className="font-serif text-4xl font-medium text-gray-900 mb-8">
+              The Serenity Experience
+            </h2>
+            <div className="w-32 h-px bg-gradient-to-r from-transparent via-rose-300 to-transparent mx-auto mb-8"></div>
+            <p className="text-xl text-gray-700 leading-relaxed font-light">
+              At Serenity Med Spa, we believe true beauty radiates from within. Our philosophy centers on 
+              enhancing your natural features while nurturing your overall well-being. Every treatment is 
+              carefully customized to your unique needs, delivered in an atmosphere of pure tranquility.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Treatment Menu */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="font-serif text-4xl font-medium text-gray-900 mb-6">
+              Treatment Menu
+            </h2>
+            <div className="w-24 h-px bg-gradient-to-r from-transparent via-rose-300 to-transparent mx-auto"></div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="animate-slide-in-left">
+              <h3 className="font-serif text-2xl font-medium text-gray-900 mb-6 pb-3 border-b border-rose-100">
+                Injectables
+              </h3>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center py-2">
+                  <div>
+                    <p className="font-medium text-gray-900">Botox Cosmetic</p>
+                    <p className="text-gray-600 text-sm">Forehead, crow's feet, frown lines</p>
+                  </div>
+                  <span className="text-rose-600 font-medium">$12/unit</span>
+                </div>
+                <div className="flex justify-between items-center py-2">
+                  <div>
+                    <p className="font-medium text-gray-900">Dermal Fillers</p>
+                    <p className="text-gray-600 text-sm">Lips, cheeks, under-eye</p>
+                  </div>
+                  <span className="text-rose-600 font-medium">From $650</span>
+                </div>
+                <div className="flex justify-between items-center py-2">
+                  <div>
+                    <p className="font-medium text-gray-900">Dysport</p>
+                    <p className="text-gray-600 text-sm">Advanced neurotoxin treatment</p>
+                  </div>
+                  <span className="text-rose-600 font-medium">$10/unit</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="animate-slide-in-right">
+              <h3 className="font-serif text-2xl font-medium text-gray-900 mb-6 pb-3 border-b border-rose-100">
+                Skin Treatments
+              </h3>
+              <div className="space-y-4">
+                <div className="flex justify-between items-center py-2">
+                  <div>
+                    <p className="font-medium text-gray-900">HydraFacial</p>
+                    <p className="text-gray-600 text-sm">Deep cleansing and hydration</p>
+                  </div>
+                  <span className="text-rose-600 font-medium">$185</span>
+                </div>
+                <div className="flex justify-between items-center py-2">
+                  <div>
+                    <p className="font-medium text-gray-900">Chemical Peel</p>
+                    <p className="text-gray-600 text-sm">Light to medium depth peels</p>
+                  </div>
+                  <span className="text-rose-600 font-medium">From $125</span>
+                </div>
+                <div className="flex justify-between items-center py-2">
+                  <div>
+                    <p className="font-medium text-gray-900">Laser Genesis</p>
+                    <p className="text-gray-600 text-sm">Collagen stimulation therapy</p>
+                  </div>
+                  <span className="text-rose-600 font-medium">$250</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Before/After */}
+      <section className="py-20 bg-stone-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="font-serif text-4xl font-medium text-gray-900 mb-6">
+              Beautiful Results
+            </h2>
+            <div className="w-24 h-px bg-gradient-to-r from-transparent via-rose-300 to-transparent mx-auto mb-6"></div>
+            <p className="text-xl text-gray-600 font-light">Real transformations from our clients</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-white rounded-3xl p-8 border border-stone-100 animate-fade-in-up-delay-1">
+              <div className="text-center">
+                <h4 className="font-serif text-xl font-medium text-gray-900 mb-4">Lip Enhancement</h4>
+                <div className="bg-gradient-to-r from-stone-100 to-rose-50 rounded-2xl p-12 mb-4">
+                  <p className="text-gray-500 font-light">Before & After Photos</p>
+                  <p className="text-gray-400 text-sm mt-2">[Professional results gallery would display here]</p>
+                </div>
+                <p className="text-gray-600 text-sm">1ml Restylane Kysse • Natural enhancement</p>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-3xl p-8 border border-stone-100 animate-fade-in-up-delay-2">
+              <div className="text-center">
+                <h4 className="font-serif text-xl font-medium text-gray-900 mb-4">Skin Rejuvenation</h4>
+                <div className="bg-gradient-to-r from-stone-100 to-rose-50 rounded-2xl p-12 mb-4">
+                  <p className="text-gray-500 font-light">Before & After Photos</p>
+                  <p className="text-gray-400 text-sm mt-2">[Professional results gallery would display here]</p>
+                </div>
+                <p className="text-gray-600 text-sm">6-week HydraFacial series • Glowing complexion</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonial */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <div className="animate-fade-in-up">
+            <div className="text-6xl text-rose-200 mb-6 font-serif">"</div>
+            <p className="text-2xl md:text-3xl font-light text-gray-700 mb-8 italic leading-relaxed">
+              The team at Serenity makes me feel so comfortable and confident. 
+              My Botox results look completely natural, and my skin has never looked better.
+            </p>
+            <div className="w-16 h-px bg-rose-300 mx-auto mb-6"></div>
+            <div>
+              <p className="font-serif text-lg font-medium text-gray-900">Jennifer Walsh</p>
+              <p className="text-gray-600">McKinney, TX</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Meet Dr. Section */}
+      <section className="py-20 bg-stone-50">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="animate-slide-in-left">
+              <h2 className="font-serif text-4xl font-medium text-gray-900 mb-6">
+                Meet Dr. Sarah Chen
+              </h2>
+              <div className="w-16 h-px bg-rose-300 mb-6"></div>
+              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                Board-certified aesthetic physician with over 10 years of experience in cosmetic medicine. 
+                Dr. Chen's artistic eye and gentle approach have helped thousands of clients achieve their 
+                aesthetic goals naturally and safely.
+              </p>
+              <div className="space-y-2 text-gray-700">
+                <p>• Board Certified in Aesthetic Medicine</p>
+                <p>• Fellowship in Advanced Injection Techniques</p>
+                <p>• Member, American Society of Aesthetic Medicine</p>
+                <p>• 10+ Years Experience in Cosmetic Treatments</p>
+              </div>
+            </div>
+            
+            <div className="animate-slide-in-right">
+              <div className="bg-white rounded-3xl p-8 border border-stone-100 text-center">
+                <div className="w-40 h-40 bg-gradient-to-br from-rose-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-6xl font-serif font-medium text-rose-500">SC</span>
+                </div>
+                <h3 className="font-serif text-xl font-medium text-gray-900 mb-2">Dr. Sarah Chen</h3>
+                <p className="text-rose-600 font-medium mb-4">Medical Director & Founder</p>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  "My passion is helping each client feel confident and beautiful in their own skin. 
+                  Every treatment is an opportunity to enhance natural beauty with artistry and precision."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="animate-slide-in-left">
+              <h2 className="font-serif text-4xl font-medium text-gray-900 mb-6">
+                Schedule Your Consultation
+              </h2>
+              <div className="w-16 h-px bg-rose-300 mb-6"></div>
+              <p className="text-xl text-gray-700 mb-8 font-light">
+                Begin your aesthetic journey with a complimentary consultation. 
+                We'll discuss your goals and create a customized treatment plan just for you.
+              </p>
+              <button
+                onClick={handleBookConsultation}
+                className="bg-rose-500 text-white px-10 py-4 rounded-full font-medium text-lg hover:bg-rose-600 transition-colors hover-lift shadow-lg"
+              >
+                Book Free Consultation
+              </button>
+            </div>
+            
+            <div className="animate-slide-in-right">
+              <div className="bg-stone-50 rounded-3xl p-8 border border-stone-100">
+                <div className="space-y-6">
+                  <div>
+                    <p className="font-serif text-lg font-medium text-gray-900 mb-1">Phone</p>
+                    <p className="text-rose-600 text-xl">(214) 555-0156</p>
+                  </div>
+                  <div>
+                    <p className="font-serif text-lg font-medium text-gray-900 mb-1">Address</p>
+                    <p className="text-gray-700">789 Wellness Way<br />McKinney, TX 75070</p>
+                  </div>
+                  <div>
+                    <p className="font-serif text-lg font-medium text-gray-900 mb-1">Hours</p>
+                    <div className="text-gray-700 space-y-1">
+                      <p>Tuesday - Friday: 9:00 AM - 7:00 PM</p>
+                      <p>Saturday: 9:00 AM - 5:00 PM</p>
+                      <p>Sunday: 10:00 AM - 5:00 PM</p>
+                      <p>Monday: Closed</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-16">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="font-serif text-2xl font-medium mb-4">Serenity Med Spa</h3>
+              <p className="text-gray-400 leading-relaxed">
+                Where luxury meets wellness. Enhance your natural beauty with our expert aesthetic treatments 
+                in the heart of McKinney.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-serif text-lg font-medium mb-4">Contact</h4>
+              <div className="text-gray-400 space-y-2">
+                <p className="text-rose-400">(214) 555-0156</p>
+                <p>hello@serenityspa.com</p>
+                <p>789 Wellness Way<br />McKinney, TX 75070</p>
+              </div>
+            </div>
+            <div>
+              <h4 className="font-serif text-lg font-medium mb-4">Services</h4>
+              <div className="text-gray-400 space-y-2">
+                <p>Botox & Dermal Fillers</p>
+                <p>HydraFacial & Chemical Peels</p>
+                <p>Laser Treatments</p>
+                <p>Body Contouring</p>
+                <p>Wellness Therapies</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-gray-800 mt-12 pt-8 text-center">
+            <p className="text-gray-400">
+              &copy; 2025 Serenity Med Spa. All rights reserved. • Licensed Medical Practice
+            </p>
+          </div>
+        </div>
+      </footer>
 
       <ChatWidget
         businessName="Serenity Med Spa"
         businessType="medspa"
       />
-    </main>
+    </div>
   )
 }
