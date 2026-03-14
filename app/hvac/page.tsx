@@ -2,6 +2,7 @@
 
 import React from 'react'
 import ChatWidget from '@/app/components/ChatWidget'
+import { motion } from 'framer-motion'
 
 export default function HVACPage() {
   const handleEmergencyCall = () => {
@@ -42,24 +43,45 @@ export default function HVACPage() {
       {/* 3. Full-Width Hero - Dark navy, bold text, two CTAs */}
       <section className="bg-slate-800 text-white py-24">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <h2 className="font-bold text-5xl md:text-6xl mb-6 animate-fade-in-up">
+          <motion.h2 
+            className="font-bold text-5xl md:text-6xl mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             McKinney's Most Trusted HVAC Company
-          </h2>
-          <p className="text-xl text-gray-300 mb-8 animate-fade-in-up-delay-1">Family-Owned Since 2008</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up-delay-2">
-            <button
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-gray-300 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Family-Owned Since 2008
+          </motion.p>
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <motion.button
               onClick={handleScheduleService}
               className="bg-orange-500 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-orange-600 transition-colors"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
             >
               Schedule Service
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={handleEmergencyCall}
               className="border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-slate-800 transition-colors"
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
             >
               Call Now
-            </button>
-          </div>
+            </motion.button>
+          </motion.div>
         </div>
       </section>
 
@@ -73,10 +95,15 @@ export default function HVACPage() {
               { icon: '⭐', text: '5-Star Rated' },
               { icon: '👪', text: 'Family-Owned' }
             ].map((item, index) => (
-              <div key={item.text} className={`animate-fade-in-up-delay-${index + 1}`}>
+              <motion.div 
+                key={item.text}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
                 <div className="text-2xl mb-2">{item.icon}</div>
                 <p className="font-semibold text-gray-800">{item.text}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -89,12 +116,12 @@ export default function HVACPage() {
           
           {/* Service 1 - Image left, text right */}
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-            <div className="animate-slide-in-left">
+            <div className="">
               <div className="bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl h-64 flex items-center justify-center">
                 <span className="text-6xl text-white">❄️</span>
               </div>
             </div>
-            <div className="animate-slide-in-right">
+            <div className="">
               <h3 className="font-bold text-3xl text-gray-900 mb-4">AC Repair</h3>
               <p className="text-gray-700 text-lg mb-4">
                 Fast, reliable air conditioning repairs. Our technicians are available 24/7 for emergency service. Same-day repairs guaranteed.
@@ -109,12 +136,12 @@ export default function HVACPage() {
 
           {/* Service 2 - Text left, image right */}
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-            <div className="lg:order-2 animate-slide-in-right">
+            <div className="lg:order-2 ">
               <div className="bg-gradient-to-br from-red-400 to-red-600 rounded-2xl h-64 flex items-center justify-center">
                 <span className="text-6xl text-white">🔥</span>
               </div>
             </div>
-            <div className="lg:order-1 animate-slide-in-left">
+            <div className="lg:order-1 ">
               <h3 className="font-bold text-3xl text-gray-900 mb-4">Heating</h3>
               <p className="text-gray-700 text-lg mb-4">
                 Keep your family warm with professional heating services. Furnace repairs, maintenance, and installations by licensed technicians.
@@ -129,12 +156,12 @@ export default function HVACPage() {
 
           {/* Service 3 - Image left, text right */}
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-            <div className="animate-slide-in-left">
+            <div className="">
               <div className="bg-gradient-to-br from-green-400 to-green-600 rounded-2xl h-64 flex items-center justify-center">
                 <span className="text-6xl text-white">🏠</span>
               </div>
             </div>
-            <div className="animate-slide-in-right">
+            <div className="">
               <h3 className="font-bold text-3xl text-gray-900 mb-4">Installation</h3>
               <p className="text-gray-700 text-lg mb-4">
                 Professional HVAC system installation. Free estimates on new systems. Energy-efficient options available with financing.
@@ -149,12 +176,12 @@ export default function HVACPage() {
 
           {/* Service 4 - Text left, image right */}
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="lg:order-2 animate-slide-in-right">
+            <div className="lg:order-2 ">
               <div className="bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl h-64 flex items-center justify-center">
                 <span className="text-6xl text-white">🔧</span>
               </div>
             </div>
-            <div className="lg:order-1 animate-slide-in-left">
+            <div className="lg:order-1 ">
               <h3 className="font-bold text-3xl text-gray-900 mb-4">Maintenance</h3>
               <p className="text-gray-700 text-lg mb-4">
                 Regular maintenance keeps your system running efficiently. Annual service plans available to extend equipment life and reduce costs.
@@ -173,15 +200,15 @@ export default function HVACPage() {
       <section className="bg-slate-800 text-white py-16">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="animate-fade-in-up">
+            <div className="">
               <div className="text-5xl font-bold text-orange-400 mb-2">2,500+</div>
               <p className="text-gray-300 text-lg">Homes Served</p>
             </div>
-            <div className="animate-fade-in-up-delay-1">
+            <div className="">
               <div className="text-5xl font-bold text-orange-400 mb-2">4.9★</div>
               <p className="text-gray-300 text-lg">Google Rating</p>
             </div>
-            <div className="animate-fade-in-up-delay-2">
+            <div className="">
               <div className="text-5xl font-bold text-orange-400 mb-2">24/7</div>
               <p className="text-gray-300 text-lg">Same-Day Service</p>
             </div>
@@ -214,7 +241,7 @@ export default function HVACPage() {
                 location: 'Plano'
               }
             ].map((testimonial, index) => (
-              <div key={index} className={`bg-white rounded-lg p-6 shadow-sm animate-fade-in-up-delay-${index + 1}`}>
+              <div key={index} className={`bg-white rounded-lg p-6 shadow-sm ${index + 1}`}>
                 <div className="text-yellow-400 text-lg mb-3">{testimonial.rating}</div>
                 <p className="text-gray-700 mb-4">"{testimonial.text}"</p>
                 <div>
@@ -233,7 +260,7 @@ export default function HVACPage() {
           <h2 className="font-bold text-4xl text-gray-900 mb-8">Serving McKinney & Surrounding Areas</h2>
           <div className="grid md:grid-cols-4 lg:grid-cols-7 gap-4">
             {['McKinney', 'Allen', 'Plano', 'Frisco', 'Prosper', 'Anna', 'Melissa'].map((city, index) => (
-              <div key={city} className={`bg-gray-100 rounded-lg p-4 animate-fade-in-up-delay-${index % 3 + 1}`}>
+              <div key={city} className={`bg-gray-100 rounded-lg p-4 ${index % 3 + 1}`}>
                 <p className="font-semibold text-gray-800">{city}</p>
               </div>
             ))}

@@ -2,6 +2,7 @@
 
 import React from 'react'
 import ChatWidget from '@/app/components/ChatWidget'
+import { motion } from 'framer-motion'
 
 export default function MedSpaPage() {
   const handleBookConsultation = () => {
@@ -30,7 +31,7 @@ export default function MedSpaPage() {
       {/* 2. Full-Screen Hero - Editorial style, centered text only */}
       <section className="min-h-screen bg-stone-50 flex items-center justify-center py-24">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <div className="animate-fade-in-up">
+          <div className="">
             <h2 className="font-source-serif text-6xl md:text-7xl text-stone-900 mb-8 leading-tight">
               Where Science Meets Beauty
             </h2>
@@ -52,17 +53,17 @@ export default function MedSpaPage() {
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-16 text-center">
-            <div className="animate-fade-in-up">
+            <div className="">
               <h3 className="font-source-serif text-2xl text-stone-900 mb-4">Botox</h3>
               <div className="w-12 h-px bg-stone-300 mx-auto mb-4"></div>
               <p className="text-stone-600">From $12/unit</p>
             </div>
-            <div className="animate-fade-in-up-delay-1">
+            <div className="">
               <h3 className="font-source-serif text-2xl text-stone-900 mb-4">Dermal Fillers</h3>
               <div className="w-12 h-px bg-stone-300 mx-auto mb-4"></div>
               <p className="text-stone-600">From $650</p>
             </div>
-            <div className="animate-fade-in-up-delay-2">
+            <div className="">
               <h3 className="font-source-serif text-2xl text-stone-900 mb-4">Chemical Peels</h3>
               <div className="w-12 h-px bg-stone-300 mx-auto mb-4"></div>
               <p className="text-stone-600">From $150</p>
@@ -74,7 +75,7 @@ export default function MedSpaPage() {
       {/* 4. Philosophy Section - Editorial paragraph */}
       <section className="py-24 bg-stone-50" id="philosophy">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="text-center animate-fade-in-up">
+          <div className="text-center ">
             <p className="font-source-serif text-3xl text-stone-700 italic leading-relaxed">
               "At Serenity, we believe beauty is not about changing who you are—it's about revealing the most confident version of yourself. Every treatment is crafted with precision, care, and an unwavering commitment to natural-looking results."
             </p>
@@ -89,7 +90,7 @@ export default function MedSpaPage() {
           
           <div className="space-y-16">
             {/* Injectables Category */}
-            <div className="animate-fade-in-up">
+            <div className="">
               <h3 className="text-stone-900 text-sm tracking-[0.2em] mb-6 uppercase">Injectables</h3>
               <div className="w-full h-px bg-stone-200 mb-8"></div>
               <div className="space-y-6">
@@ -107,7 +108,7 @@ export default function MedSpaPage() {
             </div>
 
             {/* Skin Rejuvenation Category */}
-            <div className="animate-fade-in-up-delay-1">
+            <div className="">
               <h3 className="text-stone-900 text-sm tracking-[0.2em] mb-6 uppercase">Skin Rejuvenation</h3>
               <div className="w-full h-px bg-stone-200 mb-8"></div>
               <div className="space-y-6">
@@ -125,7 +126,7 @@ export default function MedSpaPage() {
             </div>
 
             {/* Body Treatments Category */}
-            <div className="animate-fade-in-up-delay-2">
+            <div className="">
               <h3 className="text-stone-900 text-sm tracking-[0.2em] mb-6 uppercase">Body Treatments</h3>
               <div className="w-full h-px bg-stone-200 mb-8"></div>
               <div className="space-y-6">
@@ -149,7 +150,7 @@ export default function MedSpaPage() {
       <section className="py-24 bg-stone-50">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="w-24 h-px bg-stone-400 mx-auto mb-8"></div>
-          <div className="animate-fade-in-up">
+          <div className="">
             <p className="font-source-serif text-3xl text-stone-700 italic leading-relaxed mb-8">
               "The results exceeded every expectation. Dr. Chen's artistry and attention to detail is unmatched. I feel like the best version of myself."
             </p>
@@ -164,7 +165,7 @@ export default function MedSpaPage() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-source-serif text-4xl text-stone-900 mb-16 tracking-wide">Meet Dr. Lisa Chen</h2>
           
-          <div className="animate-fade-in-up">
+          <div className="">
             {/* Circular photo placeholder */}
             <div className="w-48 h-48 bg-gradient-to-br from-amber-100 to-stone-200 rounded-full mx-auto mb-8 flex items-center justify-center">
               <span className="text-4xl text-stone-600">👩‍⚕️</span>
@@ -191,17 +192,17 @@ export default function MedSpaPage() {
           <h2 className="font-source-serif text-4xl text-stone-900 mb-16 tracking-wide">Visit Us</h2>
           
           <div className="space-y-8 text-stone-700">
-            <div className="animate-fade-in-up">
+            <div className="">
               <p className="text-lg mb-2">123 Serenity Lane</p>
               <p className="text-lg">McKinney, Texas 75070</p>
             </div>
             
-            <div className="animate-fade-in-up-delay-1">
+            <div className="">
               <p className="text-xl font-medium text-stone-900">(469) 325-1034</p>
               <p className="mt-2">info@serenitymeds.com</p>
             </div>
             
-            <div className="animate-fade-in-up-delay-2">
+            <div className="">
               <h4 className="font-source-serif text-lg text-stone-900 mb-4">Hours</h4>
               <div className="space-y-2 text-stone-600">
                 <p>Tuesday – Saturday: 9:00 AM – 7:00 PM</p>
@@ -210,7 +211,7 @@ export default function MedSpaPage() {
               </div>
             </div>
             
-            <div className="animate-fade-in-up-delay-3 pt-8">
+            <div className=" pt-8">
               <button
                 onClick={handleBookConsultation}
                 className="text-stone-900 text-lg tracking-wide border-b border-stone-900 pb-1 hover:border-amber-600 hover:text-amber-600 transition-colors"

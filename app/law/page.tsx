@@ -2,6 +2,7 @@
 
 import React from 'react'
 import ChatWidget from '@/app/components/ChatWidget'
+import { motion } from 'framer-motion'
 
 export default function LawPage() {
   const handleFreeConsultation = () => {
@@ -35,15 +36,15 @@ export default function LawPage() {
       <section className="min-h-screen bg-slate-900 text-white flex items-center">
         <div className="max-w-6xl mx-auto px-6 py-24">
           <div className="max-w-3xl">
-            <h2 className="font-serif text-6xl md:text-7xl font-bold mb-6 leading-tight animate-slide-in-left">
+            <h2 className="font-serif text-6xl md:text-7xl font-bold mb-6 leading-tight ">
               Fighting for What's Right.
             </h2>
-            <p className="text-2xl text-gray-300 mb-8 animate-slide-in-left" style={{ animationDelay: '0.3s' }}>
+            <p className="text-2xl text-gray-300 mb-8 " style={{ animationDelay: '0.3s' }}>
               McKinney's premier litigation firm.
             </p>
             <button
               onClick={handleFreeConsultation}
-              className="bg-yellow-600 text-white px-10 py-5 rounded-lg font-bold text-xl hover:bg-yellow-700 transition-colors animate-slide-in-left"
+              className="bg-yellow-600 text-white px-10 py-5 rounded-lg font-bold text-xl hover:bg-yellow-700 transition-colors "
               style={{ animationDelay: '0.6s' }}
             >
               Get Your Free Case Review
@@ -59,7 +60,7 @@ export default function LawPage() {
           
           <div className="grid md:grid-cols-3 gap-8 relative">
             {/* Step 1 */}
-            <div className="text-center animate-fade-in-up">
+            <div className="text-center ">
               <div className="w-20 h-20 bg-yellow-600 text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6">
                 1
               </div>
@@ -75,7 +76,7 @@ export default function LawPage() {
             </div>
 
             {/* Step 2 */}
-            <div className="text-center animate-fade-in-up-delay-1">
+            <div className="text-center ">
               <div className="w-20 h-20 bg-yellow-600 text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6">
                 2
               </div>
@@ -91,7 +92,7 @@ export default function LawPage() {
             </div>
 
             {/* Step 3 */}
-            <div className="text-center animate-fade-in-up-delay-2">
+            <div className="text-center ">
               <div className="w-20 h-20 bg-yellow-600 text-white rounded-full flex items-center justify-center font-bold text-2xl mx-auto mb-6">
                 3
               </div>
@@ -108,15 +109,15 @@ export default function LawPage() {
       <section className="bg-yellow-600 text-slate-900 py-8">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-3 gap-8 text-center font-bold">
-            <div className="animate-fade-in-up">
+            <div className="">
               <div className="text-3xl mb-2">$50M+</div>
               <p className="text-lg">Recovered</p>
             </div>
-            <div className="animate-fade-in-up-delay-1">
+            <div className="">
               <div className="text-3xl mb-2">500+</div>
               <p className="text-lg">Cases Won</p>
             </div>
-            <div className="animate-fade-in-up-delay-2">
+            <div className="">
               <div className="text-3xl mb-2">98%</div>
               <p className="text-lg">Success Rate</p>
             </div>
@@ -138,7 +139,7 @@ export default function LawPage() {
               'Estate Planning',
               'Real Estate'
             ].map((area, index) => (
-              <div key={area} className={`border-2 border-gray-300 rounded-lg p-8 text-center hover:border-yellow-600 transition-colors animate-fade-in-up-delay-${index % 3 + 1}`}>
+              <div key={area} className={`border-2 border-gray-300 rounded-lg p-8 text-center hover:border-yellow-600 transition-colors ${index % 3 + 1}`}>
                 <h3 className="font-serif text-2xl font-bold text-gray-900">{area}</h3>
               </div>
             ))}
@@ -151,7 +152,7 @@ export default function LawPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             {/* LEFT: Bio */}
-            <div className="animate-slide-in-left">
+            <div className="">
               <h2 className="font-serif text-4xl font-bold text-gray-900 mb-4">Michael J. Stone</h2>
               <p className="text-xl text-yellow-600 mb-6 font-semibold">Managing Partner • Board Certified • 25+ Years Experience</p>
               
@@ -173,7 +174,7 @@ export default function LawPage() {
             </div>
             
             {/* RIGHT: Photo placeholder */}
-            <div className="animate-slide-in-right">
+            <div className="">
               <div className="bg-gradient-to-br from-gray-200 to-gray-300 rounded-2xl h-96 flex items-center justify-center">
                 <div className="text-center">
                   <div className="w-32 h-32 bg-slate-600 rounded-full mx-auto mb-4 flex items-center justify-center">
@@ -192,7 +193,7 @@ export default function LawPage() {
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-serif text-4xl font-bold mb-12">Client Results</h2>
           
-          <div className="animate-fade-in-up">
+          <div className="">
             <div className="text-6xl text-yellow-600 mb-6">"</div>
             <p className="font-serif text-2xl italic leading-relaxed mb-8">
               Michael Stone fought tirelessly for our family after a devastating car accident. His expertise and dedication resulted in a $2.3 million settlement that secured our future. We can't thank him enough.
@@ -213,7 +214,7 @@ export default function LawPage() {
             <p className="text-xl text-gray-700">Get your free case evaluation today</p>
           </div>
           
-          <div className="bg-white rounded-2xl p-8 shadow-lg animate-fade-in-up">
+          <div className="bg-white rounded-2xl p-8 shadow-lg ">
             <form className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>

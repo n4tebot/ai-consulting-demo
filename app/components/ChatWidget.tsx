@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface Message {
   id: string
@@ -175,26 +176,46 @@ export default function ChatWidget({ businessName, businessType, themeColor }: C
   return (
     <>
       {/* Chat Bubble */}
-      <button
+      <motion.button
         onClick={() => setIsOpen(!isOpen)}
-        className={`fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-gradient-to-r ${colors.gradient} shadow-lg hover:shadow-xl text-white flex items-center justify-center text-xl md:h-16 md:w-16 animate-fade-in-up hover:scale-110 active:scale-95 transition-transform duration-200`}
+        className={`fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-gradient-to-r ${colors.gradient} shadow-lg hover:shadow-xl text-white flex items-center justify-center text-xl md:h-16 md:w-16`}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
       >
-        <div className={`transition-all duration-200 ${isOpen ? 'rotate-0' : 'rotate-0'}`}>
+        <motion.div 
+          animate={{ rotate: isOpen ? 45 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
           {isOpen ? '✕' : '💬'}
-        </div>
-      </button>
+        </motion.div>
+      </motion.button>
 
       {/* Chat Window */}
-      {isOpen && (
-        <>
-          {/* Mobile Overlay */}
-          <div
-            className="fixed inset-0 bg-black/50 z-40 md:hidden animate-fade-in-up"
-            onClick={() => setIsOpen(false)}
-          />
-          
-          {/* Chat Panel */}
-          <div className="fixed bottom-6 right-6 z-40 w-[calc(100vw-3rem)] h-[calc(100vh-6rem)] md:w-96 md:h-[500px] bg-white rounded-2xl shadow-2xl flex flex-col md:bottom-24 animate-fade-in-up origin-bottom-right">
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Mobile Overlay */}
+            <motion.div
+              className="fixed inset-0 bg-black/50 z-40 md:hidden"
+              onClick={() => setIsOpen(false)}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            />
+            
+            {/* Chat Panel */}
+            <motion.div 
+              className="fixed bottom-6 right-6 z-40 w-[calc(100vw-3rem)] h-[calc(100vh-6rem)] md:w-96 md:h-[500px] bg-white rounded-2xl shadow-2xl flex flex-col md:bottom-24"
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.8, y: 20 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              style={{ transformOrigin: "bottom right" }}
+            >
               {/* Header */}
               <div className={`flex items-center justify-between p-4 border-b bg-gradient-to-r ${colors.gradient} text-white rounded-t-2xl`}>
                 <div className="flex items-center gap-3">
@@ -246,9 +267,9 @@ export default function ChatWidget({ businessName, businessType, themeColor }: C
                   <div className="flex justify-start">
                     <div className="bg-gray-100 text-gray-800 px-4 py-2 rounded-2xl">
                       <div className="flex space-x-1">
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-                        <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full "></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full " style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-gray-400 rounded-full " style={{ animationDelay: '0.2s' }}></div>
                       </div>
                     </div>
                   </div>
@@ -280,9 +301,10 @@ export default function ChatWidget({ businessName, businessType, themeColor }: C
                   </button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </>
         )}
+      </AnimatePresence>
     </>
   )
 }

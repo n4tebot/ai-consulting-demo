@@ -2,6 +2,7 @@
 
 import React from 'react'
 import ChatWidget from '@/app/components/ChatWidget'
+import { motion } from 'framer-motion'
 
 export default function DentalPage() {
   const handleBookAppointment = () => {
@@ -36,26 +37,54 @@ export default function DentalPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* LEFT: Headlines + CTA */}
-            <div className="animate-slide-in-left">
-              <h2 className="font-serif text-5xl font-semibold text-gray-900 mb-4">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <motion.h2 
+                className="font-serif text-5xl font-semibold text-gray-900 mb-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
                 Your Smile, Our Passion
-              </h2>
-              <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+              </motion.h2>
+              <motion.p 
+                className="text-xl text-gray-700 mb-8 leading-relaxed"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+              >
                 Comprehensive dental care for the whole family in McKinney. From routine cleanings to complete smile makeovers.
-              </p>
-              <button
+              </motion.p>
+              <motion.button
                 onClick={handleBookAppointment}
-                className="bg-teal-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-teal-600 transition-colors hover-lift"
+                className="bg-teal-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-teal-600 transition-colors"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                whileHover={{ y: -3, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
+                whileTap={{ scale: 0.95 }}
               >
                 Schedule Your Visit
-              </button>
-            </div>
+              </motion.button>
+            </motion.div>
             {/* RIGHT: Large decorative shape */}
-            <div className="animate-slide-in-right flex justify-center">
-              <div className="w-80 h-80 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center animate-subtle-float">
+            <motion.div 
+              className="flex justify-center"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <motion.div 
+                className="w-80 h-80 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center"
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 3, ease: "easeInOut", repeat: Infinity }}
+              >
                 <span className="text-8xl text-white">😊</span>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -63,7 +92,15 @@ export default function DentalPage() {
       {/* 3. Horizontal Scrolling Service Cards */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-6">
-          <h2 className="font-serif text-3xl font-semibold text-gray-900 mb-8 text-center">Our Services</h2>
+          <motion.h2 
+            className="font-serif text-3xl font-semibold text-gray-900 mb-8 text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            Our Services
+          </motion.h2>
           <div className="overflow-x-auto">
             <div className="flex gap-6 pb-4 min-w-max">
               {[
@@ -74,12 +111,20 @@ export default function DentalPage() {
                 { icon: '🚨', name: 'Emergency', desc: 'Same-day urgent care' },
                 { icon: '👶', name: 'Pediatric', desc: 'Gentle care for children' }
               ].map((service, index) => (
-                <div key={service.name} className={`bg-white border border-gray-200 rounded-lg p-6 w-64 flex-shrink-0 hover-lift animate-fade-in-up-delay-${index % 3 + 1}`}>
+                <motion.div 
+                  key={service.name} 
+                  className="bg-white border border-gray-200 rounded-lg p-6 w-64 flex-shrink-0"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ y: -3, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
+                >
                   <div className="text-3xl mb-3">{service.icon}</div>
                   <h3 className="font-serif text-lg font-semibold text-gray-900 mb-2">{service.name}</h3>
                   <p className="text-gray-600 mb-3">{service.desc}</p>
                   <span className="text-teal-600 font-medium text-sm">Learn More →</span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -105,16 +150,36 @@ export default function DentalPage() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* LEFT: Numbered list */}
-            <div className="animate-slide-in-left">
-              <h2 className="font-serif text-3xl font-semibold text-gray-900 mb-8">Why Choose Us</h2>
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <motion.h2 
+                className="font-serif text-3xl font-semibold text-gray-900 mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+              >
+                Why Choose Us
+              </motion.h2>
               <div className="space-y-6">
                 {[
                   { num: '1', title: 'Same-Day Appointments', desc: 'We fit you into our schedule when you need us most' },
                   { num: '2', title: 'Gentle & Caring Team', desc: 'Our experienced staff prioritizes your comfort' },
                   { num: '3', title: 'Modern Technology', desc: 'Digital X-rays and advanced treatment options' },
                   { num: '4', title: 'Insurance Accepted', desc: 'We work with most major insurance plans' }
-                ].map((item) => (
-                  <div key={item.num} className="flex items-start gap-4">
+                ].map((item, index) => (
+                  <motion.div 
+                    key={item.num} 
+                    className="flex items-start gap-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
+                  >
                     <div className="w-10 h-10 bg-teal-500 text-white rounded-full flex items-center justify-center font-semibold">
                       {item.num}
                     </div>
@@ -122,16 +187,21 @@ export default function DentalPage() {
                       <h3 className="font-serif text-lg font-semibold text-gray-900 mb-1">{item.title}</h3>
                       <p className="text-gray-600">{item.desc}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
             {/* RIGHT: Placeholder image area */}
-            <div className="animate-slide-in-right">
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
               <div className="bg-gradient-to-br from-teal-100 to-slate-100 rounded-2xl h-80 flex items-center justify-center">
                 <span className="text-6xl">🏥</span>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -140,7 +210,13 @@ export default function DentalPage() {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="font-serif text-3xl font-semibold text-gray-900 mb-12">What Our Patients Say</h2>
-          <div className="bg-slate-50 rounded-2xl p-8 animate-fade-in-up">
+          <motion.div 
+            className="bg-slate-50 rounded-2xl p-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="text-6xl text-teal-200 mb-4">"</div>
             <p className="text-xl text-gray-700 mb-6 italic leading-relaxed">
               Dr. Smith and her team made my dental implant procedure completely painless. The results look amazing and I can eat all my favorite foods again!
@@ -148,7 +224,7 @@ export default function DentalPage() {
             <div className="text-yellow-400 text-xl mb-3">★★★★★</div>
             <p className="font-semibold text-gray-900">Sarah Johnson</p>
             <p className="text-gray-600">McKinney, TX</p>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -157,10 +233,18 @@ export default function DentalPage() {
         <div className="max-w-6xl mx-auto px-6 text-center">
           <h2 className="font-serif text-3xl font-semibold text-gray-900 mb-8">We Accept Most Insurance</h2>
           <div className="grid md:grid-cols-4 gap-6">
-            {['Aetna', 'BlueCross BlueShield', 'Cigna', 'Delta Dental', 'MetLife', 'United Healthcare', 'Humana', 'Guardian'].map((insurer) => (
-              <div key={insurer} className="bg-white rounded-lg p-4 shadow-sm hover-lift">
+            {['Aetna', 'BlueCross BlueShield', 'Cigna', 'Delta Dental', 'MetLife', 'United Healthcare', 'Humana', 'Guardian'].map((insurer, index) => (
+              <motion.div 
+                key={insurer} 
+                className="bg-white rounded-lg p-4 shadow-sm"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -3, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
+              >
                 <p className="font-medium text-gray-700">{insurer}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
           <p className="mt-6 text-gray-600">Plus many more! Call us to verify your coverage.</p>
