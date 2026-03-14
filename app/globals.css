@@ -180,3 +180,38 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Extended color palette for templates */
+.text-navy-900 { color: #0f172a; }
+.bg-navy-900 { background-color: #0f172a; }
+.border-navy-900 { border-color: #0f172a; }
+
+/* Additional animations for templates */
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in-up {
+  animation: slide-in-up 0.8s ease-out forwards;
+}
+
+/* Hover effects for cards */
+.hover-scale {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Editorial spacing for med spa */
+.tracking-wide {
+  letter-spacing: 0.1em;
+}

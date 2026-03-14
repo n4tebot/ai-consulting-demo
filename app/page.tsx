@@ -1,124 +1,76 @@
+'use client'
+
 import React from 'react'
 import Link from 'next/link'
 
-const templates = [
-  {
-    id: 'dental',
-    title: 'Valley Creek Dental Care',
-    subtitle: 'Dental Office',
-    description: 'Warm, welcoming dental practice with comprehensive family care and modern treatments.',
-    accentColor: '#0EA5E9',
-    icon: '🦷',
-    href: '/dental'
-  },
-  {
-    id: 'hvac',
-    title: 'Harris Air Services',
-    subtitle: 'HVAC Company',
-    description: 'Reliable heating and cooling services with 24/7 emergency support for McKinney.',
-    accentColor: '#F97316',
-    icon: '❄️',
-    href: '/hvac'
-  },
-  {
-    id: 'medspa',
-    title: 'Serenity Med Spa',
-    subtitle: 'Medical Spa',
-    description: 'Luxurious aesthetic treatments and wellness services in an elegant, calming environment.',
-    accentColor: '#EC4899',
-    icon: '✨',
-    href: '/medspa'
-  },
-  {
-    id: 'law',
-    title: 'Stone & Associates',
-    subtitle: 'Law Firm',
-    description: 'Professional legal representation with expertise across multiple practice areas.',
-    accentColor: '#B8860B',
-    icon: '⚖️',
-    href: '/law'
-  }
-]
-
 export default function HomePage() {
-  return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Simple header */}
-      <header className="bg-white border-b border-gray-100">
-        <div className="max-w-6xl mx-auto px-6 py-6">
-          <div className="text-center">
-            <h1 className="text-2xl font-semibold text-gray-900">
-              AI Consulting Demo
-            </h1>
-            <p className="text-gray-600 mt-1">Live Website Templates</p>
-          </div>
-        </div>
-      </header>
+  const templates = [
+    {
+      name: 'Dental Office',
+      path: '/dental',
+      description: 'Valley Creek Dental Care',
+      color: 'bg-teal-500',
+      textColor: 'text-white',
+      icon: '🦷'
+    },
+    {
+      name: 'HVAC Company',
+      path: '/hvac',
+      description: 'Harris Air Services',
+      color: 'bg-orange-500',
+      textColor: 'text-white',
+      icon: '❄️'
+    },
+    {
+      name: 'Med Spa',
+      path: '/medspa',
+      description: 'Serenity Med Spa',
+      color: 'bg-amber-600',
+      textColor: 'text-white',
+      icon: '✨'
+    },
+    {
+      name: 'Law Firm',
+      path: '/law',
+      description: 'Stone & Associates',
+      color: 'bg-yellow-600',
+      textColor: 'text-slate-900',
+      icon: '⚖️'
+    }
+  ]
 
-      {/* Main content */}
-      <main className="max-w-6xl mx-auto px-6 py-16">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-4">
-            Choose a Template
-          </h2>
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+      <div className="max-w-6xl mx-auto px-6 py-24 text-center">
+        <div className="mb-16 animate-fade-in-up">
+          <h1 className="font-serif text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+            AI Consulting Demo
+          </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Each template is designed to match authentic business websites 
-            with integrated AI chat support.
+            Explore our production-ready website templates featuring integrated AI chatbots for professional businesses.
           </p>
         </div>
 
-        {/* Template grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {templates.map((template, index) => (
-            <Link 
-              key={template.id} 
-              href={template.href}
-              className={`group block animate-fade-in-up-delay-${index + 1}`}
+            <Link
+              key={template.name}
+              href={template.path}
+              className={`${template.color} ${template.textColor} rounded-2xl p-8 hover-lift transition-all duration-300 hover:scale-105 animate-fade-in-up-delay-${index + 1}`}
             >
-              <div className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 hover-lift">
-                <div className="p-8">
-                  <div className="flex items-start justify-between mb-4">
-                    <div 
-                      className="w-12 h-12 rounded-lg flex items-center justify-center text-2xl text-white"
-                      style={{ backgroundColor: template.accentColor }}
-                    >
-                      {template.icon}
-                    </div>
-                    <svg 
-                      className="w-5 h-5 text-gray-400 group-hover:text-gray-600 transition-colors" 
-                      fill="currentColor" 
-                      viewBox="0 0 20 20"
-                    >
-                      <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </div>
-                  
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    {template.title}
-                  </h3>
-                  
-                  <p className="text-gray-500 text-sm font-medium mb-3">
-                    {template.subtitle}
-                  </p>
-                  
-                  <p className="text-gray-600 leading-relaxed">
-                    {template.description}
-                  </p>
-                </div>
-              </div>
+              <div className="text-5xl mb-4">{template.icon}</div>
+              <h2 className="font-serif text-2xl font-bold mb-2">{template.name}</h2>
+              <p className="opacity-90">{template.description}</p>
             </Link>
           ))}
         </div>
-      </main>
 
-      {/* Simple footer */}
-      <footer className="border-t border-gray-100 bg-white">
-        <div className="max-w-6xl mx-auto px-6 py-8">
-          <div className="text-center text-sm text-gray-500">
-            <p>Built with Next.js & Tailwind CSS • AI Chat Integration</p>
-          </div>
+        <div className="mt-16 animate-fade-in-up-delay-4">
+          <p className="text-gray-500 text-sm">
+            Built with Next.js, TypeScript, and Tailwind CSS • Each template features unique layouts and AI chat integration
+          </p>
         </div>
-      </footer>
+      </div>
     </div>
   )
 }

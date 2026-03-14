@@ -12,6 +12,7 @@ interface Message {
 interface ChatWidgetProps {
   businessName: string
   businessType: 'dental' | 'hvac' | 'medspa' | 'law'
+  themeColor?: string
 }
 
 const businessAvatars = {
@@ -106,7 +107,7 @@ const getSmartResponse = (userMessage: string, businessType: string, businessNam
   return defaultResponses[Math.floor(Math.random() * defaultResponses.length)]
 }
 
-export default function ChatWidget({ businessName, businessType }: ChatWidgetProps) {
+export default function ChatWidget({ businessName, businessType, themeColor }: ChatWidgetProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
   const [inputText, setInputText] = useState('')
