@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 
 interface ContactInfo {
   phone: string
@@ -39,24 +38,12 @@ export default function Contact({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-3xl md:text-4xl font-bold mb-8"
-            >
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 animate-fade-in-up">
               Get in Touch
-            </motion.h2>
+            </h2>
 
             {emergencyService && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-red-600 rounded-xl p-6 mb-8"
-              >
+              <div className="bg-red-600 rounded-xl p-6 mb-8 animate-fade-in-up-delay-1">
                 <h3 className="text-xl font-bold mb-2 flex items-center">
                   <span className="w-3 h-3 bg-red-400 rounded-full mr-3 animate-pulse"></span>
                   Emergency Service
@@ -68,18 +55,12 @@ export default function Contact({
                 >
                   📞 {contactInfo.phone}
                 </a>
-              </motion.div>
+              </div>
             )}
 
             <div className="space-y-6">
               {/* Phone */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="flex items-start"
-              >
+              <div className="flex items-start animate-fade-in-up-delay-2">
                 <div className="w-6 h-6 text-blue-400 mr-4 flex-shrink-0 mt-1">
                   📞
                 </div>
@@ -92,16 +73,10 @@ export default function Contact({
                     {contactInfo.phone}
                   </a>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Email */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex items-start"
-              >
+              <div className="flex items-start animate-fade-in-up-delay-3">
                 <div className="w-6 h-6 text-blue-400 mr-4 flex-shrink-0 mt-1">
                   ✉️
                 </div>
@@ -114,16 +89,10 @@ export default function Contact({
                     {contactInfo.email}
                   </a>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Address */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="flex items-start"
-              >
+              <div className="flex items-start animate-fade-in-up-delay-4">
                 <div className="w-6 h-6 text-blue-400 mr-4 flex-shrink-0 mt-1">
                   📍
                 </div>

@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 import Hero from '@/app/components/templates/Hero'
 import Services from '@/app/components/templates/Services'
 import Trust from '@/app/components/templates/Trust'
@@ -140,35 +139,20 @@ function BeforeAfterGallery() {
     <section className="py-20 bg-gradient-to-br from-pink-50 to-purple-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
-          >
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate-fade-in-up">
             Amazing Transformations
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
-          >
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up-delay-1">
             See the incredible results our clients achieve with our professional treatments
-          </motion.p>
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {treatments.map((treatment, index) => (
-            <motion.div
+            <div
               key={treatment.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-8 shadow-lg text-center"
+              className="bg-white rounded-2xl p-8 shadow-lg text-center animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <h3 className="text-xl font-semibold mb-6 text-gray-900">{treatment.name}</h3>
               
@@ -189,22 +173,16 @@ function BeforeAfterGallery() {
               <button className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-6 py-2 rounded-lg font-medium hover:from-pink-600 hover:to-purple-600 transition-all duration-200">
                 View Details
               </button>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center mt-12"
-        >
+        <div className="text-center mt-12 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
           <p className="text-gray-600 mb-4">*Individual results may vary. Photos shown with patient consent.</p>
           <button className="bg-gradient-to-r from-pink-500 to-purple-500 text-white px-8 py-3 rounded-xl font-semibold hover:from-pink-600 hover:to-purple-600 transition-all duration-200 shadow-lg">
             Schedule Your Consultation
           </button>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
@@ -228,40 +206,21 @@ export default function MedSpaPage() {
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6 bg-pink-100 text-pink-800 border border-pink-200"
-            >
+            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6 bg-pink-100 text-pink-800 border border-pink-200 animate-fade-in-up">
               ✨ Complimentary Consultations Available
-            </motion.div>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
-            >
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in-up-delay-1">
               <span className="bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent">
                 Enhance Your Natural Beauty
               </span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed"
-            >
+            <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed animate-fade-in-up-delay-2">
               Discover the perfect balance of science and luxury at Serenity Med Spa. Our expert team provides personalized aesthetic treatments in a serene, spa-like environment.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
+            <div className="animate-fade-in-up-delay-3">
               <button
                 onClick={handleBookConsultation}
                 className="inline-flex items-center px-8 py-4 rounded-xl text-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-200 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 transform hover:scale-105"
@@ -271,7 +230,7 @@ export default function MedSpaPage() {
                   <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                 </svg>
               </button>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

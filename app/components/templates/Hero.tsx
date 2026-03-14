@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 
 interface HeroProps {
   title: string
@@ -40,11 +39,7 @@ export default function Hero({
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center max-w-4xl mx-auto">
           {badge && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6 ${
+            <div className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6 animate-fade-in-up ${
                 urgency 
                   ? 'bg-red-100 text-red-800 border border-red-200' 
                   : 'bg-blue-100 text-blue-800 border border-blue-200'
@@ -52,32 +47,18 @@ export default function Hero({
             >
               {urgency && <span className="w-2 h-2 bg-red-500 rounded-full mr-2 animate-pulse"></span>}
               {badge}
-            </motion.div>
+            </div>
           )}
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight"
-          >
+          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-fade-in-up-delay-1">
             {title}
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed"
-          >
+          <p className="text-xl md:text-2xl text-gray-600 mb-8 leading-relaxed animate-fade-in-up-delay-2">
             {subtitle}
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          >
+          <div className="animate-fade-in-up-delay-3">
             <button
               onClick={ctaAction}
               className={`inline-flex items-center px-8 py-4 rounded-xl text-lg font-semibold text-white shadow-lg hover:shadow-xl transition-all duration-200 ${
@@ -91,7 +72,7 @@ export default function Hero({
                 <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
             </button>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

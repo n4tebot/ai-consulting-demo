@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 
 interface Message {
   id: string
@@ -139,72 +138,26 @@ export default function ChatWidget({ businessName, businessType }: ChatWidgetPro
   return (
     <>
       {/* Chat Bubble */}
-      <motion.button
+      <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg hover:shadow-xl text-white flex items-center justify-center text-xl md:h-16 md:w-16"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg hover:shadow-xl text-white flex items-center justify-center text-xl md:h-16 md:w-16 animate-fade-in-up hover:scale-110 active:scale-95 transition-transform duration-200"
       >
-        <AnimatePresence mode="wait">
-          {isOpen ? (
-            <motion.div
-              key="close"
-              initial={{ rotate: -90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: 90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              ✕
-            </motion.div>
-          ) : (
-            <motion.div
-              key="chat"
-              initial={{ rotate: 90, opacity: 0 }}
-              animate={{ rotate: 0, opacity: 1 }}
-              exit={{ rotate: -90, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              💬
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.button>
+        <div className={`transition-all duration-200 ${isOpen ? 'rotate-0' : 'rotate-0'}`}>
+          {isOpen ? '✕' : '💬'}
+        </div>
+      </button>
 
       {/* Chat Window */}
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            {/* Mobile Overlay */}
-            <motion.div
-              className="fixed inset-0 bg-black/50 z-40 md:hidden"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-            />
-            
-            {/* Chat Panel */}
-            <motion.div
-              className="fixed bottom-6 right-6 z-40 w-[calc(100vw-3rem)] h-[calc(100vh-6rem)] md:w-96 md:h-[500px] bg-white rounded-2xl shadow-2xl flex flex-col md:bottom-24"
-              initial={{ 
-                scale: 0,
-                opacity: 0,
-                transformOrigin: "bottom right"
-              }}
-              animate={{ 
-                scale: 1,
-                opacity: 1
-              }}
-              exit={{ 
-                scale: 0,
-                opacity: 0,
-                transformOrigin: "bottom right"
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            >
+      {isOpen && (
+        <>
+          {/* Mobile Overlay */}
+          <div
+            className="fixed inset-0 bg-black/50 z-40 md:hidden animate-fade-in-up"
+            onClick={() => setIsOpen(false)}
+          />
+          
+          {/* Chat Panel */}
+          <div className="fixed bottom-6 right-6 z-40 w-[calc(100vw-3rem)] h-[calc(100vh-6rem)] md:w-96 md:h-[500px] bg-white rounded-2xl shadow-2xl flex flex-col md:bottom-24 animate-fade-in-up origin-bottom-right">
               {/* Header */}
               <div className="flex items-center justify-between p-4 border-b bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-t-2xl">
                 <div className="flex items-center gap-3">
@@ -290,10 +243,9 @@ export default function ChatWidget({ businessName, businessType }: ChatWidgetPro
                   </button>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </>
         )}
-      </AnimatePresence>
     </>
   )
 }

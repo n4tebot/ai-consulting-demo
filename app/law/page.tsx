@@ -1,7 +1,6 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 import Hero from '@/app/components/templates/Hero'
 import Services from '@/app/components/templates/Services'
 import Trust from '@/app/components/templates/Trust'
@@ -163,35 +162,20 @@ function AttorneyProfiles() {
     <section className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
-          >
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate-fade-in-up">
             Meet Our Legal Team
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
-          >
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in-up-delay-1">
             Experienced attorneys dedicated to protecting your rights and achieving the best possible outcome for your case
-          </motion.p>
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {attorneys.map((attorney, index) => (
-            <motion.div
+            <div
               key={attorney.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-8 shadow-lg text-center"
+              className="bg-white rounded-2xl p-8 shadow-lg text-center animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="text-6xl mb-6">{attorney.photo}</div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">{attorney.name}</h3>
@@ -215,7 +199,7 @@ function AttorneyProfiles() {
               <button className="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-xl font-medium transition-colors">
                 Contact {attorney.name.split(' ')[0]}
               </button>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
@@ -236,55 +220,34 @@ function CaseResults() {
     <section className="py-20 bg-blue-900 text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-3xl md:text-4xl font-bold mb-4"
-          >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-fade-in-up">
             Proven Results
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-xl text-blue-100 max-w-3xl mx-auto"
-          >
+          </h2>
+          <p className="text-xl text-blue-100 max-w-3xl mx-auto animate-fade-in-up-delay-1">
             Recent successful cases and recoveries for our clients
-          </motion.p>
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {results.map((result, index) => (
-            <motion.div
+            <div
               key={result.type}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-blue-800 rounded-xl p-6 text-center"
+              className="bg-blue-800 rounded-xl p-6 text-center animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <h3 className="text-2xl font-bold text-yellow-400 mb-2">{result.amount}</h3>
               <h4 className="font-semibold mb-3">{result.type}</h4>
               <p className="text-sm text-blue-200">{result.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-center mt-12"
-        >
+        <div className="text-center mt-12 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
           <p className="text-blue-200 mb-4">*Past results do not guarantee future outcomes.</p>
           <button className="bg-yellow-500 hover:bg-yellow-400 text-blue-900 px-8 py-3 rounded-xl font-bold transition-colors">
             Free Case Evaluation
           </button>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
@@ -308,41 +271,21 @@ export default function LawPage() {
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
           <div className="text-center max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6 bg-yellow-400 text-blue-900"
-            >
+            <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6 bg-yellow-400 text-blue-900 animate-fade-in-up">
               ⚖️ Free Consultation Available
-            </motion.div>
+            </div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
-            >
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-fade-in-up-delay-1">
               Protecting Your Rights,
               <br />
               <span className="text-yellow-400">Fighting for Justice</span>
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed"
-            >
+            <p className="text-xl md:text-2xl text-blue-100 mb-8 leading-relaxed animate-fade-in-up-delay-2">
               Experienced legal representation across Texas. From personal injury to family law, we fight tirelessly to achieve the best outcome for your case.
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up-delay-3">
               <button
                 onClick={handleFreeConsultation}
                 className="inline-flex items-center px-8 py-4 rounded-xl text-lg font-semibold bg-yellow-400 text-blue-900 shadow-lg hover:shadow-xl transition-all duration-200 hover:bg-yellow-300 transform hover:scale-105"
@@ -355,7 +298,7 @@ export default function LawPage() {
               <button className="inline-flex items-center px-8 py-4 rounded-xl text-lg font-semibold border-2 border-white text-white hover:bg-white hover:text-blue-900 transition-all duration-200">
                 Call (214) 555-0123
               </button>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
