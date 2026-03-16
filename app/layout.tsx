@@ -13,11 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AI Consulting Demo - Professional Business Websites with AI Chatbots",
-  description: "Explore our production-ready website templates featuring integrated AI chatbots for dental offices, HVAC companies, med spas, and law firms. Built with Next.js and modern web technologies.",
-  keywords: "AI websites, business templates, Next.js, chatbot integration, McKinney TX, web development",
-  authors: [{ name: "AI Consulting Solutions" }],
-  viewport: "width=device-width, initial-scale=1",
+  title: "Liow Digital — AI-Powered Websites for Local Businesses",
+  description: "Liow Digital builds modern websites with AI chatbots and automation for local businesses in McKinney, TX and beyond. Custom web design, SEO, and lead generation.",
+  keywords: "AI websites, web design McKinney TX, chatbot integration, local business websites, Liow Digital, Nathan Liow",
+  authors: [{ name: "Nathan Liow" }],
 };
 
 export default function RootLayout({

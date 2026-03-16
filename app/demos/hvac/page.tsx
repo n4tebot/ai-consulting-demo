@@ -1,6 +1,7 @@
 'use client'
 
 import React from 'react'
+import Link from 'next/link'
 import ChatWidget from '@/app/components/ChatWidget'
 import { motion } from 'framer-motion'
 
@@ -15,6 +16,11 @@ export default function HVACPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Back to Home */}
+      <Link href="/" className="fixed top-4 left-4 z-50 bg-white/90 backdrop-blur-sm text-gray-700 hover:text-gray-900 px-4 py-2 rounded-full shadow-md text-sm font-medium flex items-center gap-2 transition-colors">
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
+        Liow Digital
+      </Link>
       {/* 1. Emergency Bar */}
       <div className="bg-orange-500 text-white py-3">
         <div className="max-w-6xl mx-auto px-6 text-center">
