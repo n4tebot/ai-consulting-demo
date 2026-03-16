@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import ChatWidget from '@/app/components/ChatWidget'
+import DemoNav from '@/app/components/DemoNav'
 import { motion } from 'framer-motion'
 
 export default function Dental3Page() {
@@ -12,11 +13,6 @@ export default function Dental3Page() {
 
   return (
     <div className="min-h-screen bg-white font-poppins">
-      {/* Back to Home */}
-      <Link href="/" className="fixed top-4 left-4 z-50 bg-white/90 backdrop-blur-sm text-[#1E293B] hover:text-[#0891B2] px-4 py-2 rounded-full shadow-md text-sm font-medium flex items-center gap-2 transition-colors">
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-        Liow Digital
-      </Link>
 
       {/* Sticky Nav */}
       <nav className="sticky top-0 z-40 bg-white shadow-sm">
@@ -350,6 +346,7 @@ export default function Dental3Page() {
         </div>
       </footer>
 
+      <DemoNav />
       <ChatWidget businessName="Bright Smiles Dental" businessType="dental" themeColor="#0891B2" />
     </div>
   )

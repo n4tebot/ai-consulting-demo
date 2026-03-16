@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import ChatWidget from '@/app/components/ChatWidget'
+import DemoNav from '@/app/components/DemoNav'
 import { motion } from 'framer-motion'
 
 const practiceAreas = [
@@ -81,11 +82,6 @@ const pillars = [
 export default function Law2Page() {
   return (
     <div className="min-h-screen bg-white">
-      {/* Back to Home */}
-      <Link href="/" className="fixed top-4 left-4 z-50 bg-white/90 backdrop-blur-sm text-gray-700 hover:text-gray-900 px-4 py-2 rounded-full shadow-md text-sm font-medium flex items-center gap-2 transition-colors">
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-        Liow Digital
-      </Link>
 
       {/* Sticky Nav */}
       <nav className="sticky top-0 z-40" style={{ backgroundColor: '#0C1B33' }}>
@@ -446,6 +442,7 @@ export default function Law2Page() {
         </div>
       </footer>
 
+      <DemoNav />
       <ChatWidget businessName="Barrett & Associates" businessType="law" themeColor="#C9A96E" />
     </div>
   )

@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import ChatWidget from '@/app/components/ChatWidget'
+import DemoNav from '@/app/components/DemoNav'
 import { motion } from 'framer-motion'
 
 export default function HVAC3Page() {
@@ -70,11 +71,6 @@ export default function HVAC3Page() {
 
   return (
     <div className="min-h-screen bg-white font-merriweather">
-      {/* Back to Home */}
-      <Link href="/" className="fixed top-4 left-4 z-50 bg-white/90 backdrop-blur-sm text-gray-700 hover:text-[#1E3A5F] px-4 py-2 rounded-full shadow-md text-sm font-medium flex items-center gap-2 transition-colors">
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-        Liow Digital
-      </Link>
 
       {/* Top Bar */}
       <div className="bg-[#1E3A5F] text-white py-2">
@@ -483,6 +479,7 @@ export default function HVAC3Page() {
         </div>
       </footer>
 
+      <DemoNav />
       <ChatWidget
         businessName="Comfort Zone HVAC"
         businessType="hvac"

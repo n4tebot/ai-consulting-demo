@@ -3,6 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import ChatWidget from '@/app/components/ChatWidget'
+import DemoNav from '@/app/components/DemoNav'
 import { motion } from 'framer-motion'
 
 export default function MedSpaPage() {
@@ -12,11 +13,6 @@ export default function MedSpaPage() {
 
   return (
     <div className="min-h-screen bg-stone-50 font-light">
-      {/* Back to Home */}
-      <Link href="/" className="fixed top-4 left-4 z-50 bg-white/90 backdrop-blur-sm text-gray-700 hover:text-gray-900 px-4 py-2 rounded-full shadow-md text-sm font-medium flex items-center gap-2 transition-colors">
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-        Liow Digital
-      </Link>
       {/* 1. Minimal Nav - Centered logo, hamburger-style nav */}
       <nav className="bg-stone-50 py-6 border-b border-stone-200">
         <div className="max-w-6xl mx-auto px-6">
@@ -242,6 +238,7 @@ export default function MedSpaPage() {
         </div>
       </footer>
 
+      <DemoNav />
       <ChatWidget
         businessName="Serenity Med Spa"
         businessType="medspa"
